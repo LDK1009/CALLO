@@ -212,6 +212,7 @@ const Dashboard = () => {
                     border: "0px",
                     borderRadius: "10px",
                     margin: "40px 0px",
+                    cursor: "pointer", // 커서 추가
                 }}
                 type="submit"
             >
