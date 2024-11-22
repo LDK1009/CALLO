@@ -2,6 +2,7 @@ import { Product } from "@/types/models/product.type";
 import { supabase } from "../lib/supabaseClient";
 import { GetProductsResponse } from "@/types/services/productServiceType";
 
+// GET
 export const getProdcts = async (majorCategory?: string, middleCategory?: string): Promise<GetProductsResponse> => {
   let query = supabase.from("products").select("*");
 
@@ -24,12 +25,14 @@ export const getProdcts = async (majorCategory?: string, middleCategory?: string
   return { data, error };
 };
 
-export const postProdct = async (product: Product) => {
-  const response = await supabase.from("products").insert(product);
+// POST
+export const postProdct = async (product: [Product]): Promise<GetProductsResponse> => {
+  const response = await supabase.from("products").insert(product).select();
   return response;
 };
 
-export const deleteUser = async (id: number) => {
+// DELETE
+export const deleteUser = async (id: number): Promise<GetProductsResponse> => {
   const response = await supabase.from("products").delete().eq("id", id);
   return response;
 };
