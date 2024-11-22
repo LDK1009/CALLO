@@ -8,7 +8,7 @@ const useProduct = () => {
   const [error, setError] = useState<PostgrestErrorType | null>(null);
 
   const getAllProducts = async () => {
-    const response = await getProdcts("all");
+    const response = await getProdcts();
 
     if (response) {
       const { data, error } = response;

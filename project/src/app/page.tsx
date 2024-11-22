@@ -4,19 +4,16 @@ import { useEffect } from "react";
 import useProduct from "../hooks/useProduct";
 
 export default function Home() {
-  const { getAllProducts, products, loading, error } = useProduct();
+  const { getAllProducts, products, error } = useProduct();
 
   useEffect(() => {
-    getAllProducts();
-  }, [products]);
-
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
+      getAllProducts();
+  }, []);
 
   return (
-    <div>
-      hi
-    </div>
+      <div>
+          <pre>{JSON.stringify(products, null, 2)}</pre>
+          <pre>{JSON.stringify(error, null, 2)}</pre>
+      </div>
   );
 }
