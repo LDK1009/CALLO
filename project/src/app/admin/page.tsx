@@ -1,11 +1,12 @@
-"use client";
+import Admin from "@/pages/Admin";
 
-const Admin = () => {
+const page = () => {
     return (
         <>
+            <Admin />
         </>
     );
 
 };
 
-export default Admin;
+export default page;
