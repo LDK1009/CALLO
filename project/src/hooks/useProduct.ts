@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { getProdcts } from "../services/productService";
+import { getProdcts, postProdct } from "../services/productService";
 import { Product } from "@/types/models/product.type";
 import { PostgrestErrorType } from "@/types/postgrests/postgrestError.type";
 
 const useProduct = () => {
-  const [products, setProducts] = useState<Product[] | null>([]);
+  const [ responseData, setResponseData] = useState<Product[] | null>([]);
   const [error, setError] = useState<PostgrestErrorType | null>(null);
 
   const getAllProducts = async () => {
@@ -12,13 +12,24 @@ const useProduct = () => {
 
     if (response) {
       const { data, error } = response;
-      setProducts(data);
+      setResponseData(data);
       setError(error);
       return;
     }
   };
 
-  return { getAllProducts, products, error };
+  const postProducts = async (product: [Product]) => {
+    const response = await postProdct(product);
+
+    if (response) {
+      const { data, error } = response;
+      setResponseData(data);
+      setError(error);
+      return;
+    }
+  };
+
+  return { getAllProducts, postProducts, responseData, error };
 };
 
 export default useProduct;

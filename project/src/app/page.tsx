@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import useProduct from "../hooks/useProduct";
 
 export default function Home() {
-  const { getAllProducts, products, error } = useProduct();
+  const { getAllProducts, responseData, error } = useProduct();
 
   useEffect(() => {
       getAllProducts();
@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
       <div>
-          <pre>{JSON.stringify(products, null, 2)}</pre>
+          <pre>{JSON.stringify(responseData, null, 2)}</pre>
           <pre>{JSON.stringify(error, null, 2)}</pre>
       </div>
   );

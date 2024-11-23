@@ -1,10 +1,11 @@
 "use client";
 
-import { postProdct } from "@/services/productService";
+import useProduct from "@/hooks/useProduct";
 import { Product } from "@/types/models/product.type";
 import React, { useEffect, useState } from "react";
 
 const Dashboard = () => {
+    // 인풋 데이터
     const [formData, setFormData] = useState<Product>({
         name: "",
         link: "",
@@ -22,14 +23,8 @@ const Dashboard = () => {
         },
     });
 
-    // price_per_piece 계산
-    useEffect(() => {
-        setFormData((prevData) => ({
-            ...prevData,
-            price_per_piece:
-                prevData.piece !== 0 ? parseFloat((prevData.price / prevData.piece).toFixed(0)) : 0,
-        }));
-    }, [formData.price, formData.piece]);
+    // POST 커스텀훅
+    const { postProducts, responseData: postResponse, error: postError } = useProduct();
 
     // input 데이터 변경 감지 핸들러
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,17 +52,9 @@ const Dashboard = () => {
     // form 제출 핸들러
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const reponse = await postProdct([formData]);
-
-        if (reponse) {
-            const { data, error } = reponse;
-            console.log("success POST : ", data);
-            console.log("에러 내용 : ", error);
-            ClearFormData();
-        }
-
-    };
-
+        await postProducts([formData]);
+        ClearFormData();
+    }
 
     // 폼 데이터 초기화
     const ClearFormData = () => {
@@ -89,10 +76,25 @@ const Dashboard = () => {
         });
     }
 
+    // price_per_piece 계산
+    useEffect(() => {
+        setFormData((prevData) => ({
+            ...prevData,
+            price_per_piece:
+                prevData.piece !== 0 ? parseFloat((prevData.price / prevData.piece).toFixed(0)) : 0,
+        }));
+    }, [formData.price, formData.piece]);
+
     // 입력값 콘솔
     // useEffect(() => {
     //     console.log(formData);
     // }, [formData]);
+
+    // POST 데이터 확인
+    useEffect(() => {
+        console.log("postResponse : ", postResponse);
+        console.log("postError : ", postError);
+    }, [postResponse, postError]);
 
     return (
         <form onSubmit={handleSubmit}>
