@@ -1,6 +1,10 @@
-
+export type ProductWithId = Product & {
+  id: number; // 제품 고유 ID (varchar)
+};
 
 export type Product = {
+  id: number;
+  created_at: Date;
   name: string; // 제품 이름 (varchar)
   link: string; // 제품 링크 (varchar)
   src: string; // 소스 URL 또는 파일 경로 (varchar)
@@ -10,11 +14,11 @@ export type Product = {
   piece: number;
   price_per_piece: number;
   nutritional: Nutritional; // 영양 정보 (json)
-}
+};
 
 export type Nutritional = {
   calories: number;
   carbohydrate: number;
   protein: number;
   fat: number;
-}
+};
