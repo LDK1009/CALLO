@@ -1,6 +1,6 @@
 import { Product } from "../models/product.type";
 
-export interface GetProductsResponse {
+export type GetProductsResponse = {
     data: Product[] | null;
     error: PostgrestError | null;
 }
