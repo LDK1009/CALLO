@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 // Props 타입 정의
-interface SignInProps {
+type SignInProps = {
     setIsSignIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 

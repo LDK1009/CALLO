@@ -1,6 +1,6 @@
 import { Product } from "@/types/models/product.type";
 import { supabase } from "../lib/supabaseClient";
-import { GetProductsResponse } from "@/types/services/productServiceType";
+import { GetProductsResponse } from "@/types/services/productService.type";
 
 // GET
 export const getProdcts = async (majorCategory?: string, middleCategory?: string): Promise<GetProductsResponse> => {
