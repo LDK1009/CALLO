@@ -51,6 +51,7 @@ const GlobalStyles = createGlobalStyle`
 
   /* Body 스타일 */
   body {
+    margin: 0px;
     line-height: 1.6;
   }
 
