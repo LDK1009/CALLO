@@ -5,11 +5,11 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
   :root {
   /* 기본 색상 */
-  --main-color: #26539C;
+  --main-color: #2ECC71;
   
   /* 서브 색상 (보조 색상) */
-  --secondary-color: #4A78C4;
-  --third-color: #8FADE6; 
+  --secondary-color: #FFFFFF;
+  --third-color: #FFA726; 
   
   /* 강조 색상 */
   --accent-color: #FFD700; /* 강조: 골드 */
