@@ -1,13 +1,11 @@
-import ItemContainer from "@/components/home/ItemContainer";
 import GlobalStyles from "@/styles/GlobalStyles";
+import Home from "@/pages/Home";
 
-export default function Home() {
+export default function page() {
   return (
     <>
       <GlobalStyles />
-      <div>
-        <ItemContainer />
-      </div>
+      <Home />
     </>
   );
 }
