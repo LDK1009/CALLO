@@ -3,8 +3,6 @@ import StyledComponentsRegistry from "@/lib/registry";
 import AppBar from "@/components/AppBar";
 import Header from "@/components/Header";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import { ThemeProvider } from "@mui/material/styles";
-import MuiTheme from "@/styles/MuiTheme";
 import ThemeRegistry from "@/components/ThemeRegistry";
 
 export const metadata: Metadata = {

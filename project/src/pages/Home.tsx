@@ -9,8 +9,8 @@ const Home = () => {
   return (
     <Conatainer>
       <Carousel />
-      <MenuBlock/>
-      <SearchBar/>
+      <MenuBlock />
+      <SearchBar />
     </Conatainer>
   );
 };

@@ -1,5 +1,4 @@
-import { AccountCircle } from "@mui/icons-material";
-import { InputAdornment, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import styled from "styled-components";
 
@@ -22,7 +21,6 @@ const SearchBar = () => {
 export default SearchBar;
 
 const Container = styled(TextField)`
-
 `;
 
 const SerchIconCustom = styled(SearchIcon)`
