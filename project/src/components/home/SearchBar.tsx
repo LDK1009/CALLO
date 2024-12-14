@@ -10,6 +10,7 @@ const SearchBar = () => {
         variant="outlined"
         slotProps={{
           input: {
+            startAdornment:<img src="/logo.png"/>,
             endAdornment: <SerchIconCustom />,
           },
         }}
