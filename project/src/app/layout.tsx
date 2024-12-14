@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import StyledComponentsRegistry from "@/lib/registry";
-import AppBar from "@/components/AppBar";
-import Header from "@/components/Header";
+import AppBar from "@/components/common/AppBar";
+import Header from "@/components/common/Header";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import ThemeRegistry from "@/components/ThemeRegistry";
+import ThemeRegistry from "@/components/common/ThemeRegistry";
 
 export const metadata: Metadata = {
   title: "Create Next App",
