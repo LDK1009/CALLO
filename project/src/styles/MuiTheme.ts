@@ -29,6 +29,26 @@ const MuiTheme = createTheme({
         },
       },
     },
+    // Select 컴포넌트 스타일 오버라이드
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          // 포커스 전
+          "&.MuiInputBase-root::before": {
+            borderBottomColor: "var(--main-color)",
+            borderWidth: "1px",
+          },
+          // 포커스 후
+          "&.MuiInputBase-root::after": {
+            borderBottomColor: "var(--main-color)",
+          },
+          // 우측 아이콘
+          "& .MuiSvgIcon-root": {
+            color:"var(--main-color)",
+          },
+        },
+      },
+    },
   },
 });
 
