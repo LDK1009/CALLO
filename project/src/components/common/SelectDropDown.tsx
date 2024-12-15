@@ -35,8 +35,9 @@ const SelectDropDown = () => {
 export default SelectDropDown;
 
 const StyledFormControl = styled(FormControl)`
-  width: 300px;
-  & .MuiSelect-select{
-    font-size:10px;
+  flex-grow: 1;
+
+  & .MuiSelect-select {
+    font-size: 10px;
   }
 `;
