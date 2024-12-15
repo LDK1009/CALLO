@@ -4,24 +4,30 @@ import styled from "styled-components";
 
 const SearchBar = () => {
   return (
-    <>
-      <Container
+    <Container>
+      <StyledTextField
         id="outlined-basic"
         variant="outlined"
         slotProps={{
           input: {
-            startAdornment:<img src="/logo.png"/>,
+            startAdornment: <img src="/logo.png" alt="" />,
             endAdornment: <SerchIconCustom />,
           },
         }}
       />
-    </>
+    </Container>
   );
 };
 
 export default SearchBar;
 
-const Container = styled(TextField)`
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledTextField = styled(TextField)`
+  width: 350px;
 `;
 
 const SerchIconCustom = styled(SearchIcon)`
