@@ -7,27 +7,29 @@ import "swiper/css";
 
 const Carousel = () => {
   return (
-    <Container
-      spaceBetween={50} // 슬라이드 간격
-      slidesPerView={1} // 한 번에 보여줄 슬라이드 수
-      onSlideChange={() => console.log("Slide changed")}
-      onSwiper={(swiper) => console.log(swiper)}
-      modules={[Autoplay]}
-      autoplay={{
-        delay: 3000, // 3초마다 전환
-        disableOnInteraction: false, // 사용자 상호작용 후에도 자동 재생 유지
-      }}
-    >
-      <SwiperSlide>
-        <img src="/vercel.svg" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="/vercel.svg" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="/vercel.svg" />
-      </SwiperSlide>
-    </Container>
+    <div>
+      <Container
+        spaceBetween={50} // 슬라이드 간격
+        slidesPerView={1} // 한 번에 보여줄 슬라이드 수
+        onSlideChange={() => console.log("Slide changed")}
+        onSwiper={(swiper) => console.log(swiper)}
+        modules={[Autoplay]}
+        autoplay={{
+          delay: 3000, // 3초마다 전환
+          disableOnInteraction: false, // 사용자 상호작용 후에도 자동 재생 유지
+        }}
+      >
+        <SwiperSlide>
+          <img src="/vercel.svg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="/vercel.svg" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="/vercel.svg" />
+        </SwiperSlide>
+      </Container>
+    </div>
   );
 };
 
