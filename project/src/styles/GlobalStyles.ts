@@ -1,6 +1,6 @@
 // 파일: src/styles/GlobalStyles.js
-"use client"
-import { createGlobalStyle } from 'styled-components';
+"use client";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
   :root {

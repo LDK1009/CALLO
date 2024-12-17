@@ -1,4 +1,3 @@
-
 export type AuthState = {
   isLogin: boolean;
   userId: string | null;

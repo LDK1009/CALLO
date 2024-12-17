@@ -15,8 +15,7 @@ const PopularProduct = () => {
 
 export default PopularProduct;
 
-const Container = styled.div`
-`;
+const Container = styled.div``;
 
 const TitleContainer = styled.div`
   display: flex;

@@ -7,8 +7,6 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const Cart = () => {
-
-
   return <div></div>;
 };
 

@@ -44,7 +44,7 @@ const MuiTheme = createTheme({
           },
           // 우측 아이콘
           "& .MuiSvgIcon-root": {
-            color:"var(--main-color)",
+            color: "var(--main-color)",
           },
         },
       },

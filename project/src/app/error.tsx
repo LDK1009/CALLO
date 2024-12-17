@@ -1,6 +1,6 @@
-'use client'; // 클라이언트 컴포넌트
+"use client"; // 클라이언트 컴포넌트
 
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 interface ErrorProps {
   error: Error; // 에러 객체

@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
-import { useRouter } from 'next/navigation';
+import { useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
+import { useRouter } from "next/navigation";
 
 export default function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
 
   // 로그인 처리 함수
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMessage(''); // 에러 메시지 초기화
+    setErrorMessage(""); // 에러 메시지 초기화
     // async function signInWithEmail() {
     //     console.log("data : ", data);
     //   }
@@ -28,11 +28,11 @@ export default function SignIn() {
         throw new Error(error.message);
       }
 
-      console.log('로그인 성공');
-      router.push('/'); // 로그인 성공 후 홈으로 이동
+      console.log("로그인 성공");
+      router.push("/"); // 로그인 성공 후 홈으로 이동
     } catch (err: any) {
-      console.error('로그인 실패:', err.message);
-      setErrorMessage(err.message || '로그인 중 오류가 발생했습니다.');
+      console.error("로그인 실패:", err.message);
+      setErrorMessage(err.message || "로그인 중 오류가 발생했습니다.");
     }
   };
 

@@ -19,16 +19,16 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-          <GlobalStyles />
-          <StyledComponentsRegistry>
-            <AppRouterCacheProvider>
-              <ThemeRegistry>
-                <Header />
-                {children}
-                <AppBar />
-              </ThemeRegistry>
-            </AppRouterCacheProvider>
-          </StyledComponentsRegistry>
+        <GlobalStyles />
+        <StyledComponentsRegistry>
+          <AppRouterCacheProvider>
+            <ThemeRegistry>
+              <Header />
+              {children}
+              <AppBar />
+            </ThemeRegistry>
+          </AppRouterCacheProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

@@ -15,7 +15,7 @@ type Anchor = "top" | "left" | "bottom" | "right";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [isSecondOpen, setIsSecondOpen] = React.useState()
+  const [isSecondOpen, setIsSecondOpen] = React.useState();
 
   const list = (anchor: Anchor) => (
     <Box sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : "30vw" }} role="presentation">

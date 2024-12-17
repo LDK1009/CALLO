@@ -2,7 +2,7 @@ export type CartState = {
   items: CartItem[];
   addItem: (item: CartItem) => void;
   removeItem: (id: number) => void;
-}
+};
 
 export type CartItem = {
   product_id: number; // int4
