@@ -25,7 +25,6 @@ const SignIn = ({ setIsSignIn }: SignInProps) => {
         <>
             <input type="password" placeholder="비밀번호를 입력하세요." value={password} onChange={(e) => setPassword(e.target.value)} />
             <button onClick={submit}>로그인</button>
-            로그인 컴포넌트
         </>
     );
 };

@@ -7,6 +7,7 @@ const useProduct = () => {
   const [responseData, setResponseData] = useState<Product[] | null>([]);
   const [error, setError] = useState<PostgrestError | null>(null);
 
+  // 상품 가져오기
   const getAllProducts = async () => {
     const response = await getProdcts();
 
@@ -18,6 +19,7 @@ const useProduct = () => {
     }
   };
 
+  // 상품 등록
   const postProducts = async (product: [Product]) => {
     const response = await postProdct(product);
 
