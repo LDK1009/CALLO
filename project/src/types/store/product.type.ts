@@ -1,9 +1,10 @@
-export type ProductWithId = Product & {
-  id: number; // 제품 고유 ID (varchar)
+export type ProductState = {
+  products: Product[];
+  setProducts: (products: Product[]) => void;
 };
 
 export type Product = {
-  id: number;
+  id?: number;
   created_at: Date;
   name: string; // 제품 이름 (varchar)
   link: string; // 제품 링크 (varchar)

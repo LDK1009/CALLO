@@ -1,4 +1,4 @@
-import { Product } from "../models/product.type";
+import { Product } from "../store/product.type";
 import { PostgrestError } from "../postgrests/postgrestError.type";
 
 export type GetProductsResponse = {
