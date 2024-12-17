@@ -4,6 +4,7 @@ import AppBar from "@/components/common/AppBar";
 import Header from "@/components/common/Header";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import ThemeRegistry from "@/components/common/ThemeRegistry";
+import GlobalStyles from "@/styles/GlobalStyles";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,15 +19,16 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <StyledComponentsRegistry>
-          <AppRouterCacheProvider>
-            <ThemeRegistry>
-              <Header />
-              {children}
-              <AppBar />
-            </ThemeRegistry>
-          </AppRouterCacheProvider>
-        </StyledComponentsRegistry>
+          <GlobalStyles />
+          <StyledComponentsRegistry>
+            <AppRouterCacheProvider>
+              <ThemeRegistry>
+                <Header />
+                {children}
+                <AppBar />
+              </ThemeRegistry>
+            </AppRouterCacheProvider>
+          </StyledComponentsRegistry>
       </body>
     </html>
   );
