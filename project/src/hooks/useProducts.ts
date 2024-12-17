@@ -3,12 +3,12 @@ import { getProdcts, postProdct } from "../services/productService";
 import { Product } from "@/types/models/product.type";
 import { PostgrestError } from "@/types/postgrests/postgrestError.type";
 
-const useProduct = () => {
+const useProducts = () => {
   const [responseData, setResponseData] = useState<Product[] | null>([]);
   const [error, setError] = useState<PostgrestError | null>(null);
 
   // 상품 가져오기
-  const getAllProducts = async () => {
+  const useGetProducts = async () => {
     const response = await getProdcts();
 
     if (response) {
@@ -20,7 +20,7 @@ const useProduct = () => {
   };
 
   // 상품 등록
-  const postProducts = async (product: [Product]) => {
+  const usePostProducts = async (product: [Product]) => {
     const response = await postProdct(product);
 
     if (response) {
@@ -31,7 +31,7 @@ const useProduct = () => {
     }
   };
 
-  return { getAllProducts, postProducts, responseData, error };
+  return { useGetProducts, usePostProducts, responseData, error };
 };
 
-export default useProduct;
+export default useProducts;

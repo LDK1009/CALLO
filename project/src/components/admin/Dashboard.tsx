@@ -1,6 +1,6 @@
 "use client";
 
-import useProduct from "@/hooks/useProduct";
+import useProducts from "@/hooks/useProducts";
 import { Product } from "@/types/models/product.type";
 import React, { useEffect, useState } from "react";
 
@@ -24,7 +24,7 @@ const Dashboard = () => {
     });
 
     // POST 커스텀훅
-    const { postProducts, responseData: postResponse, error: postError } = useProduct();
+    const { usePostProducts, responseData: postResponse, error: postError } = useProducts();
 
     // input 데이터 변경 감지 핸들러
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +52,7 @@ const Dashboard = () => {
     // form 제출 핸들러
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await postProducts([formData]);
+        await usePostProducts([formData]);
         ClearFormData();
     }
 

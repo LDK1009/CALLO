@@ -1,14 +1,14 @@
 "use client";
 
-import useProduct from "@/hooks/useProduct";
+import useProducts from "@/hooks/useProducts";
 import { useEffect } from "react";
 import Item from "../home/Item";
 
 const ItemContainer = () => {
-  const { getAllProducts, responseData } = useProduct();
+  const { useGetProducts, responseData } = useProducts();
 
   useEffect(() => {
-    getAllProducts();
+    useGetProducts();
   }, []);
 
   return (
