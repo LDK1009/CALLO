@@ -1,10 +1,21 @@
 import { ProductWithId } from "@/types/models/product.type";
 import styled from "styled-components";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { checkUserSession } from "@/lib/auth/checkUserSession";
 
 export default function Item({ data }: { data: ProductWithId }) {
   const { name, link, src, major_category, middle_category, price, piece, price_per_piece, nutritional } = data;
   const { calories, carbohydrate, protein, fat } = nutritional;
+
+  async function addCart() {
+    const isLogin = await checkUserSession();
+
+    if (isLogin) {
+      console.log("장바구니에 담겼습니다!");
+    } else {
+      console.log("로그인 후 이용가능합니다!");
+    }
+  }
 
   return (
     <Card>
@@ -21,7 +32,7 @@ export default function Item({ data }: { data: ProductWithId }) {
               <Price>{price}원</Price>
               <PricePerUnit>{price_per_piece}원/개</PricePerUnit>
             </div>
-            <ShoppingCartIconContaienr>
+            <ShoppingCartIconContaienr onClick={addCart}>
               <ShoppingCartIcon />
             </ShoppingCartIconContaienr>
           </PriceContainer>
