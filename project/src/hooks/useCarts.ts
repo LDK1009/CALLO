@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { getCarts } from "@/services/cartService";
-import { Cart } from "@/types/models/cart.type";
+import { CartItem } from "@/types/store/cart.type";
 
 const useCarts = () => {
-  const [carts, setCarts] = useState<Cart[] | null>([]);
+  const [carts, setCarts] = useState<CartItem[] | null>([]);
 
   // 장바구니 가져오기
   const useGetCarts = async (userId: string) => {

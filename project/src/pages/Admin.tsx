@@ -13,6 +13,5 @@ const Admin = () => {
 export default Admin;
 
 const Conatainer = styled.div`
-
   padding-top: 50px;
 `;

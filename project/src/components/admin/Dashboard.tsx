@@ -1,7 +1,7 @@
 "use client";
 
 import useProducts from "@/hooks/useProducts";
-import { Product } from "@/types/models/product.type";
+import { Product } from "@/types/store/product.type";
 import React, { useEffect, useState } from "react";
 
 const Dashboard = () => {

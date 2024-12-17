@@ -1,9 +1,9 @@
-import { ProductWithId } from "@/types/models/product.type";
+import { Product } from "@/types/store/product.type";
 import styled from "styled-components";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { checkUserSession } from "@/lib/auth/checkUserSession";
 
-export default function Item({ data }: { data: ProductWithId }) {
+export default function Item({ data }: { data: Product }) {
   const { name, link, src, major_category, middle_category, price, piece, price_per_piece, nutritional } = data;
   const { calories, carbohydrate, protein, fat } = nutritional;
 

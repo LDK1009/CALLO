@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getProdcts, postProdct } from "../services/productService";
-import { Product } from "@/types/models/product.type";
+import { Product } from "@/types/store/product.type";
 import { PostgrestError } from "@/types/postgrests/postgrestError.type";
 
 const useProducts = () => {
