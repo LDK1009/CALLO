@@ -9,7 +9,7 @@ const Carousel = () => {
   return (
     <div>
       <Container
-        spaceBetween={50} // 슬라이드 간격
+        spaceBetween={0} // 슬라이드 간격
         slidesPerView={1} // 한 번에 보여줄 슬라이드 수
         onSlideChange={() => console.log("Slide changed")}
         onSwiper={(swiper) => console.log(swiper)}
@@ -20,13 +20,13 @@ const Carousel = () => {
         }}
       >
         <SwiperSlide>
-          <img src="/vercel.svg" />
+          <img src="/배너1.png" width="100%" height="100%" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/vercel.svg" />
+          <img src="/배너2.png" width="100%" height="100%" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/vercel.svg" />
+          <img src="/배너3.png" width="100%" height="100%" />
         </SwiperSlide>
       </Container>
     </div>
