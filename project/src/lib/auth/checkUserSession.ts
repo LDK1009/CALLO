@@ -1,4 +1,3 @@
-import useErrorHandler from "@/hooks/useErrorHandler";
 import { supabase } from "@/lib/supabaseClient";
 
 /**
