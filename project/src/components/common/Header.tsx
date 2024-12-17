@@ -15,6 +15,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-evenly;
   position: fixed;
+  z-index:100;
   top: 0px;
   border-bottom:2px solid lightgray;
   backdrop-filter: blur(10px); /* 블러 효과 */

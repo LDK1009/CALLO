@@ -6,29 +6,40 @@ import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import CottageOutlinedIcon from "@mui/icons-material/CottageOutlined";
 import PentagonOutlinedIcon from "@mui/icons-material/PentagonOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import Link from "next/link";
 
 const AppBar = () => {
   return (
     <Container>
       {/* 메뉴 */}
       <IconWrap>
-        <MenuIcon />
+        <Link href="/main">
+          <MenuIcon />
+        </Link>
       </IconWrap>
       {/* 게시글 */}
       <IconWrap>
-        <ArticleIcon />
+        <Link href="/main">
+          <ArticleIcon />
+        </Link>
       </IconWrap>
       {/* 홈 */}
       <IconWrap>
-        <HomeIcon />
+        <Link href="/main">
+          <HomeIcon />
+        </Link>
       </IconWrap>
       {/* 데이터랩 */}
       <IconWrap>
-        <PentagonIcon />
+        <Link href="/main">
+          <PentagonIcon />
+        </Link>
       </IconWrap>
       {/* 마이페이지 */}
       <IconWrap>
-        <UserIcon />
+        <Link href="/main">
+          <UserIcon />
+        </Link>
       </IconWrap>
     </Container>
   );
@@ -47,7 +58,7 @@ const Container = styled.div`
   left: 0px;
   backdrop-filter: blur(10px); /* 블러 효과 */
 
-  & > div > svg {
+  & > div > a > svg {
     width: 30px !important;
     height: 30px !important;
     color: var(--main-color);
