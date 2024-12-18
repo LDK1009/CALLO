@@ -1,4 +1,4 @@
-import { checkUserSession } from "@/lib/auth/checkUserSession";
+import { checkUserSession } from "@/services/auth/checkUserSession";
 import { supabase } from "@/lib/supabaseClient";
 import { useState } from "react";
 

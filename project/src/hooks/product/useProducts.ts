@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { getProdcts, postProdct } from "../services/productService";
+import { getProdcts, postProdct } from "../../services/product/productService";
 import { Product } from "@/types/store/product.type";
-import { PostgrestError } from "@/types/postgrests/postgrestError.type";
+import { PostgrestError } from "@/types/etc/postgrestError.type";
 
 const useProducts = () => {
   const [responseData, setResponseData] = useState<Product[] | null>([]);

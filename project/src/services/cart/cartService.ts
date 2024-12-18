@@ -1,5 +1,5 @@
 import { CartItem } from "@/types/store/cart.type";
-import { supabase } from "../lib/supabaseClient";
+import { supabase } from "../../lib/supabaseClient";
 
 // GET
 // 장바구니 데이터 가져오는 함수

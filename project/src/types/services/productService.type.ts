@@ -1,5 +1,5 @@
 import { Product } from "../store/product.type";
-import { PostgrestError } from "../postgrests/postgrestError.type";
+import { PostgrestError } from "../etc/postgrestError.type";
 
 export type GetProductsResponse = {
   data: Product[] | null;

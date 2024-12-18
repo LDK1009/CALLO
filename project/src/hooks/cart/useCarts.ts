@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getCarts } from "@/services/cartService";
+import { getCarts } from "@/services/cart/cartService";
 import { CartItem } from "@/types/store/cart.type";
 
 const useCarts = () => {

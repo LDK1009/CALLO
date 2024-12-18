@@ -1,6 +1,6 @@
 "use client";
 
-import useProducts from "@/hooks/useProducts";
+import useProducts from "@/hooks/product/useProducts";
 import { Product } from "@/types/store/product.type";
 import React, { useEffect, useState } from "react";
 

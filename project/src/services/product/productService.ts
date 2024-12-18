@@ -1,5 +1,5 @@
 import { Product } from "@/types/store/product.type";
-import { supabase } from "../lib/supabaseClient";
+import { supabase } from "../../lib/supabaseClient";
 import { GetProductsResponse } from "@/types/services/productService.type";
 
 // GET
