@@ -1,36 +1,10 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+함수 명명규칙
+아키텍쳐 특성 상 sevice의 함수를 hooks에서 호출하여 사용하기 때문에 명명 규칙을 세웠다.
 
-## Getting Started
+service 폴더 내 함수들은 모두 DB와 직접적인 통신을 한다.
+따라서, 함수명을 [ HTTP 메서드 + 함수명 ]으로 정의한다.
+ex) 로그인 함수 = postSignIn(email, password){...}
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+hooks 폴더의 커스텀훅 내부의 메서드들의 함수명은 상태를 변경한다.
+따라서, 함수명을 [ handel + 함수명 ]으로 정의한다.
+ex) 로그인 메서드 = handleSignIn(email, password){...}
