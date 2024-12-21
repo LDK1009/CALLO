@@ -25,7 +25,7 @@ const Img = styled.img`
   top: 0px;
   left: 50%;
   transform: translateX(-50%);
-  width: 250px;
+  width: 200px;
   height: 50px;
   z-index: 100;
 `;
