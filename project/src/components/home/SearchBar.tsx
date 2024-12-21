@@ -1,6 +1,7 @@
 import { TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import styled from "styled-components";
+import Image from "next/image";
 
 const SearchBar = () => {
   return (
@@ -10,7 +11,7 @@ const SearchBar = () => {
         variant="outlined"
         slotProps={{
           input: {
-            startAdornment: <img src="/logo.png" alt="" />,
+            startAdornment: <Image src="/img/로고1.png" alt="example" width={30} height={30} />,
             endAdornment: <SerchIconCustom />,
           },
         }}
