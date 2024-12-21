@@ -1,30 +1,49 @@
 "use client";
 
 import styled from "styled-components";
+import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 
 const Header = () => {
-  return <Container>CALLO</Container>;
+  return (
+    <Container>
+      <Img src="/img/로고 배너1.png" />
+      <ArrowBackIosNewOutlinedIcon />
+      <RightIconsGroup>
+        <SearchOutlinedIcon />
+        <ShoppingBagOutlinedIcon />
+      </RightIconsGroup>
+    </Container>
+  );
 };
 
 export default Header;
 
+const Img = styled.img`
+  position: fixed;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 50px;
+  z-index: 100;
+`;
+
 const Container = styled.div`
   width: 100%;
   height: 50px;
+  padding: 0px 8px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-evenly;
   position: fixed;
-  z-index: 100;
   top: 0px;
-  border-bottom: 2px solid lightgray;
-  backdrop-filter: blur(10px); /* 블러 효과 */
-  font-size: var(--middle-title-font-size);
-  font-weight: bold;
+  z-index: 100;
+  background-color: white;
+`;
 
-  & > div > svg {
-    width: 30px !important;
-    height: 30px !important;
-    color: var(--main-color);
-  }
+const RightIconsGroup = styled.div`
+  display: flex;
+  gap: 8px;
 `;
