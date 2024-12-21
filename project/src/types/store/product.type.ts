@@ -1,9 +1,9 @@
 export type ProductState = {
-  products: Product[];
-  setProducts: (products: Product[]) => void;
+  products: ProductType[];
+  setProducts: (products: ProductType[]) => void;
 };
 
-export type Product = {
+export type ProductType = {
   id?: number;
   created_at?: Date;
   name: string; // 제품 이름 (varchar)

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import ProductGrid from "./ProductGrid";
+import { Typography } from "@mui/material";
 
 const PopularProduct = () => {
   return (
     <Container>
       <TitleContainer>
-        <TitleIcon src="/heart.png" />
-        <TitleText>인기 상품</TitleText>
+        <TitleText variant="body1">인기 상품</TitleText>
       </TitleContainer>
       <ProductGrid />
     </Container>
@@ -15,24 +15,17 @@ const PopularProduct = () => {
 
 export default PopularProduct;
 
-const Container = styled.div``;
+const Container = styled.div`
+  width: 100%;
+`;
 
 const TitleContainer = styled.div`
+  padding: 0px 8px;
   display: flex;
   align-items: center;
-  padding-left: 10px;
   height: 20px;
 `;
 
-const TitleIcon = styled.img`
-  width: 12px;
-  height: 10px;
-  margin-right: 4px;
-`;
-
-const TitleText = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  font-size: 12px;
+const TitleText = styled(Typography)`
+  font-weight: bold !important;
 `;

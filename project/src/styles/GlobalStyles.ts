@@ -10,6 +10,10 @@ const GlobalStyles = createGlobalStyle`
   /* 서브 색상 (보조 색상) */
   --secondary-color: #FFFFFF;
   --third-color: #FFA726; 
+
+  /* 그레이 */
+  --gray : #777777;
+  --light-gray : #CCCCCC;
   
   /* 강조 색상 */
   --accent-color: #FFD700; /* 강조: 골드 */

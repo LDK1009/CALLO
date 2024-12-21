@@ -23,12 +23,14 @@ const SearchBar = () => {
 export default SearchBar;
 
 const Container = styled.div`
+  width: 100%;
+  padding: 8px;
   display: flex;
   justify-content: center;
 `;
 
 const StyledTextField = styled(TextField)`
-  width: 350px;
+  width: 100%;
 `;
 
 const SerchIconCustom = styled(SearchIcon)`

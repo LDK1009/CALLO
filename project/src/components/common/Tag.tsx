@@ -10,7 +10,7 @@ const Container = styled.div`
   width: 60px;
   height: 20px;
   margin-right: 12px;
-  background: linear-gradient(to right, #2300eb, #ffdfea);
+  background: linear-gradient(to right, var(--main-color), var(--secondary-color));
   border-radius: 10px;
   font-size: 8px;
   display: flex;

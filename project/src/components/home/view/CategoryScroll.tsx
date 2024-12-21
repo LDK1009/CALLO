@@ -26,6 +26,7 @@ export default CategoryScroll;
 
 const Container = styled.div`
   width: 100%;
+  padding:8px;
   display: flex;
   overflow-x: scroll;
   scroll-behavior: smooth;

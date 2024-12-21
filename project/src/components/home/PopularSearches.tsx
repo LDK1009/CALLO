@@ -16,14 +16,16 @@ const PopularSearches = () => {
 export default PopularSearches;
 
 const Container = styled.div`
+  width: 100%;
   height: 30px;
+  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 const Box = styled.div`
-  width: 350px;
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
