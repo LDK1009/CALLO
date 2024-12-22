@@ -51,22 +51,25 @@ const useAuth = () => {
   // 회원가입
   async function handleSignUp({ email, password }: signUpType) {
     const { data, error } = await signUp({ email, password });
-
-    // 이메일 중복 검사
-    if (data?.user?.aud === "authenticated") {
-      open({
-        title: "Error",
-        content: `회원가입 에러 발생
-        이미 가입된 이메일입니다.
-        `,
-      });
-    }
-    // 에러 검사
-    else if (error) {
+    console.log("data:", data);
+    console.log("error:", error?.code);
+    // 에러 처리
+    if (error) {
       open({
         title: "Error",
         content: `회원가입 에러 발생
         잠시 후 다시 시도해주세요.
+        `,
+      });
+      return;
+    }
+
+    // 이메일 중복 검사
+    if (data?.user?.role === "") {
+      open({
+        title: "Error",
+        content: `회원가입 에러 발생
+        이미 가입된 이메일입니다.
         `,
       });
     }
