@@ -5,37 +5,31 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import PentagonOutlinedIcon from "@mui/icons-material/PentagonOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const AppBar = () => {
+  const router = useRouter();
+  
   return (
     <Container>
-      <LogoImg src="/img/로고1.png" />
+      <LogoImg src="/img/로고1.png" onClick={()=>{router.push("/")}}/>
       {/* 메뉴 */}
-      <IconWrap>
-        <Link href="/main">
+      <IconWrap onClick={()=>{router.push("/")}}>
           <MenuIcon />
-        </Link>
       </IconWrap>
       {/* 게시글 */}
-      <IconWrap>
-        <Link href="/main">
+      <IconWrap onClick={()=>{router.push("/")}}>
           <ArticleIcon />
-        </Link>
       </IconWrap>
       {/* 홈 */}
       <EmptyArea />
       {/* 데이터랩 */}
-      <IconWrap>
-        <Link href="/main">
+      <IconWrap onClick={()=>{router.push("/")}}>
           <PentagonIcon />
-        </Link>
       </IconWrap>
       {/* 마이페이지 */}
-      <IconWrap>
-        <Link href="/main">
+      <IconWrap onClick={()=>{router.push("/")}}>
           <UserIcon />
-        </Link>
       </IconWrap>
     </Container>
   );
@@ -54,7 +48,7 @@ const Container = styled.div`
   bottom: 0px;
   background-color: white;
 
-  & > div > a > svg {
+  & svg {
     width: 30px !important;
     height: 30px !important;
     color: var(--main-color);
