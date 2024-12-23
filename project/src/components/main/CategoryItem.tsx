@@ -11,7 +11,7 @@ type PropsType = {
 const CategoryItem = ({ onClick, text, isSelect }: PropsType) => {
   return (
     <Container onClick={onClick} $isSelect={isSelect}>
-      {text ? text : "전체"}
+      {text}
     </Container>
   );
 };

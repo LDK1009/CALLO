@@ -7,18 +7,18 @@ import { useProductStore } from "@/store";
 
 const CategoryScrollX = () => {
   const [categories, setCategories] = useState([
-    { text: "", isSelect: false },
-    { text: "음료", isSelect: false },
-    { text: "간식", isSelect: false },
-    { text: "빵", isSelect: false },
-    { text: "면", isSelect: false },
-    { text: "아이스크림", isSelect: false },
-    { text: "냉동", isSelect: false },
-    { text: "통조림", isSelect: false },
-    { text: "소스", isSelect: false },
-    { text: "밥/죽", isSelect: false },
-    { text: "도시락", isSelect: false },
-    { text: "유제품", isSelect: false },
+    { text: "전체", query: "", isSelect: false },
+    { text: "음료", query: "beverage", isSelect: false },
+    { text: "간식", query: "snack", isSelect: false },
+    { text: "빵", query: "bread", isSelect: false },
+    { text: "면", query: "noodle", isSelect: false },
+    { text: "아이스크림", query: "ice_cream", isSelect: false },
+    { text: "냉동", query: "frozen", isSelect: false },
+    { text: "통조림", query: "canned", isSelect: false },
+    { text: "소스", query: "sauce", isSelect: false },
+    { text: "밥/죽", query: "rice_porridge", isSelect: false },
+    { text: "도시락", query: "lunch_box", isSelect: false },
+    { text: "유제품", query: "dairy", isSelect: false },
   ]);
 
   const middleCategory = useProductStore((state) => state.middleCategory);
@@ -26,17 +26,17 @@ const CategoryScrollX = () => {
 
   useEffect(() => {
     setCategories((prev) =>
-      prev.map((category) =>
-        category.text === middleCategory ? { ...category, isSelect: true } : { ...category, isSelect: false }
-      )
+      prev.map((el) => (el.query === middleCategory ? { ...el, isSelect: true } : { ...el, isSelect: false }))
     );
+
+    console.log(middleCategory);
   }, [middleCategory]);
 
   const RenderCategories = categories.map((el, idx) => {
     return (
       <CategoryItem
         onClick={() => {
-          setMiddleCategory(el.text);
+          setMiddleCategory(el.query);
         }}
         key={idx}
         text={el.text}
