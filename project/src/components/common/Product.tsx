@@ -11,13 +11,30 @@ const Product = ({ info }: { info: ProductType }) => {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
+  const { nutritional } = info;
+
   return (
     <Link href={info.link} target="_blank" rel="noopener noreferrer">
       <Container>
-        <Img src={info.src} alt="" />
+        <ImgNutritionalWrap>
+          <Img src={info.src} alt="" />
+          <Nutritional>
+            <TypographyWrap>
+              <Typography variant="body1">탄수화물 : {nutritional.carbohydrate}</Typography>
+              <Typography variant="body1">단백질 : {nutritional.protein}</Typography>
+              <Typography variant="body1">지방 : {nutritional.fat}</Typography>
+              <Typography variant="body1">칼로리 : {nutritional.calories}</Typography>
+            </TypographyWrap>
+          </Nutritional>
+        </ImgNutritionalWrap>
         <HeadTextWrap>
           <Typography variant="body1">BEST</Typography>
-          <ShoppingIcon />
+          <ShoppingIcon
+            onClick={(e) => {
+              e.preventDefault(); // 기본 동작 중단 (리다이렉션 방지)
+              alert("개발중인 기능입니다!");
+            }}
+          />
         </HeadTextWrap>
         <Name variant="body1">{info.name}</Name>
         <PriceWrap>
@@ -42,10 +59,43 @@ const Container = styled.div`
   align-items: center;
 `;
 
+const ImgNutritionalWrap = styled.div`
+  width: 100%;
+  display: flex;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  /* 스크롤바 제거 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+`;
+
 const Img = styled.img`
   width: 100%;
   height: auto;
   border-radius: 12px;
+  scroll-snap-align: start;
+`;
+
+const Nutritional = styled.div`
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+`;
+
+const TypographyWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  & > p {
+    font-weight: bold;
+  }
 `;
 
 const HeadTextWrap = styled.div`
@@ -61,6 +111,7 @@ const ShoppingIcon = styled(ShoppingBagOutlined)`
 `;
 
 const Name = styled(Typography)`
+  align-self:flex-start;
   display: -webkit-box; /* 플렉스 박스처럼 동작 */
   -webkit-box-orient: vertical; /* 수직 방향으로 텍스트 정렬 */
   overflow: hidden; /* 넘치는 텍스트 숨김 */
