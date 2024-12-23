@@ -1,12 +1,14 @@
 "use client";
 
-import ItemContainer from "@/components/main/ItemContainer";
+import ProductGrid from "@/components/home/ProductGrid";
+import CategoryScrollX from "@/components/main/view/CategoryScrollX";
 import styled from "styled-components";
 
 const Main = () => {
   return (
     <Conatainer>
-      <ItemContainer />
+      <CategoryScrollX/>
+      <ProductGrid />
     </Conatainer>
   );
 };
