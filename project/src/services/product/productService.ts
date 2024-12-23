@@ -1,4 +1,4 @@
-import { Product } from "@/types/store/product.type";
+import { ProductType } from "@/types/store/product.type";
 import { supabase } from "../../lib/supabaseClient";
 import { GetProductsResponse } from "@/types/services/productService.type";
 
@@ -8,25 +8,24 @@ export const getProdcts = async (majorCategory?: string, middleCategory?: string
 
   // 조건 체이닝
   if (majorCategory) {
-    query = query.eq("majorCategory", majorCategory);
+    query = query.eq("major_category", majorCategory);
   }
   if (middleCategory) {
-    query = query.eq("middleCategory", middleCategory);
+    query = query.eq("middle_category", middleCategory);
   }
   if (majorCategory && middleCategory) {
-    query = query.eq("majorCategory", majorCategory).eq("middleCategory", middleCategory);
+    query = query.eq("major_category", majorCategory).eq("middle_category", middleCategory);
   }
-
+  console.log("쿼리 실행")
+  console.log(query);
   // 쿼리 실행
   const { data, error } = await query;
-
-  console.log("Fetch Products Result:", { data, error }); // 디버깅용 로그
 
   return { data, error };
 };
 
 // POST
-export const postProdct = async (product: [Product]): Promise<GetProductsResponse> => {
+export const postProdct = async (product: [ProductType]): Promise<GetProductsResponse> => {
   const response = await supabase.from("products").insert(product).select();
   return response;
 };

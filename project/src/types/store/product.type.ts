@@ -1,6 +1,10 @@
 export type ProductState = {
-  products: ProductType[];
-  setProducts: (products: ProductType[]) => void;
+  products: ProductType[] | null;
+  majorCategory: string;
+  middleCategory: string;
+  setProducts: (products: ProductType[] | null) => void;
+  setMajorCategory: (majorCategory: string) => void;
+  setMiddleCategory: (middleCategory: string) => void;
 };
 
 export type ProductType = {

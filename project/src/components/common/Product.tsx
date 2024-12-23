@@ -10,6 +10,7 @@ const Product = ({ info }: { info: ProductType }) => {
   const formatNumber = (value: number): string => {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
+
   return (
     <Link href={info.link} target="_blank" rel="noopener noreferrer">
       <Container>

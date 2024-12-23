@@ -1,7 +1,7 @@
 "use client";
 
-import ProductGrid from "@/components/home/ProductGrid";
-import CategoryScrollX from "@/components/main/view/CategoryScrollX";
+import ProductGrid from "@/components/common/ProductGrid";
+import CategoryScrollX from "@/components/main/CategoryScrollX";
 import styled from "styled-components";
 
 const Main = () => {

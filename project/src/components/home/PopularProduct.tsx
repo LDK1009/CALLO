@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ProductGrid from "./ProductGrid";
+import ProductGrid from "../common/ProductGrid";
 import { Typography } from "@mui/material";
 
 const PopularProduct = () => {

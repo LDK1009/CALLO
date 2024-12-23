@@ -1,4 +1,4 @@
-import Input from "@/components/common/view/Input";
+import Input from "@/components/common/Input";
 
 import React, { useState } from "react";
 import SignUpForm from "../domain/SignUpForm";
