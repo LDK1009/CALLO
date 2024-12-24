@@ -29,6 +29,7 @@ const Container = styled.div`
   width: 375px;
   height: 200px;
   padding: 16px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -41,9 +42,8 @@ const GotoButton = styled(Link)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--main-color);
   border-radius: 12px;
-  box-shadow: 4px 4px 16px 0px var(--main-color);
+  box-shadow: 4px 4px 16px 0px rgba(244, 224, 175, 0.8);
 `;
 
 const IconBox = styled.div`
