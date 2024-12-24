@@ -5,13 +5,14 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyles = createGlobalStyle`
   :root {
   /* 기본 색상 */
-  --main-color: #F4E0AF;
+  --main-color: #A4BE7B;
   
   /* 서브 색상 (보조 색상) */
   --secondary-color: #FFFFFF;
   --third-color: #FFA726; 
 
-  /* 그레이 */
+  --test:#285430;
+  --black: #000000;
   --gray : #777777;
   --light-gray : #CCCCCC;
   

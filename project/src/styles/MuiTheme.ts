@@ -12,18 +12,17 @@ const MuiTheme = createTheme({
           // MuiTextField의 최상위 DOM 요소를 대상으로 스타일을 적용
           // root > MuiInputBase-root
           "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "var(--main-color)", // 포커스 상태의 보더 색상 (CSS 변수 사용)
+            borderColor: "var(--test)", // 포커스 상태의 보더 색상 (CSS 변수 사용)
             borderWidth: "2px",
           },
           // 포커스 시 적용 스타일
           "& .MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: "var(--main-color)", // 포커스 상태의 보더 색상 (CSS 변수 사용)
-            borderWidth: "3px",
+            borderColor: "var(--test)", // 포커스 상태의 보더 색상 (CSS 변수 사용)
           },
           // 호버 적용
           "& .MuiInputBase-root:hover ": {
             "& .MuiOutlinedInput-notchedOutline": {
-              borderColor: "var(--main-color)", // 포커스 상태의 보더 색상 (CSS 변수 사용)
+              borderColor: "var(--test)", // 포커스 상태의 보더 색상 (CSS 변수 사용)
             },
           },
         },

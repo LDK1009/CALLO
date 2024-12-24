@@ -51,15 +51,15 @@ const Container = styled.div`
   & svg {
     width: 30px !important;
     height: 30px !important;
-    color: var(--main-color);
+    color: var(--black);
   }
 `;
 
 const LogoImg = styled.img`
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   position: fixed;
-  bottom: 10px;
+  bottom: 5px;
 `;
 
 const EmptyArea = styled.div`

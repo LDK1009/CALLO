@@ -11,12 +11,14 @@ const Header = () => {
 
   return (
     <Container>
-      <Img
-        src="/img/로고 배너1.png"
-        onClick={() => {
-          router.push("/");
-        }}
-      />
+      <ImgBox>
+        <Img
+          src="/img/로고 배너1.png"
+          onClick={() => {
+            router.push("/");
+          }}
+        />
+      </ImgBox>
       <ArrowBackIosNewOutlinedIcon
         onClick={() => {
           router.back();
@@ -40,13 +42,21 @@ const Header = () => {
 
 export default Header;
 
-const Img = styled.img`
+const ImgBox = styled.div`
+  width: 140px;
+  height: 50px;
   position: fixed;
   top: 0px;
   left: 50%;
   transform: translateX(-50%);
-  width: 200px;
-  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Img = styled.img`
+  width: 100%;
+  height: 35px;
   z-index: 100;
 `;
 

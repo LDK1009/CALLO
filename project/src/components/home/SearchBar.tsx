@@ -34,11 +34,11 @@ const StyledTextField = styled(TextField)`
 `;
 
 const SerchIconCustom = styled(SearchIcon)`
-  color: var(--main-color);
+  color: var(--test);
 
   // 선분 스타일링
   & path {
-    stroke: var(--main-color); /* 아이콘의 테두리 색 */
+    stroke: var(--test); /* 아이콘의 테두리 색 */
     stroke-width: 1px; /* 테두리 두께 */
   }
 `;
