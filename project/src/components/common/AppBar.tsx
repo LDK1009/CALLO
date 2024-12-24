@@ -18,17 +18,17 @@ const AppBar = () => {
           <MenuIcon />
       </IconWrap>
       {/* 게시글 */}
-      <IconWrap onClick={()=>{router.push("/")}}>
+      <IconWrap onClick={()=>{router.push("/article")}}>
           <ArticleIcon />
       </IconWrap>
       {/* 홈 */}
       <EmptyArea />
       {/* 데이터랩 */}
-      <IconWrap onClick={()=>{router.push("/")}}>
+      <IconWrap onClick={()=>{router.push("/data-lab")}}>
           <PentagonIcon />
       </IconWrap>
       {/* 마이페이지 */}
-      <IconWrap onClick={()=>{router.push("/")}}>
+      <IconWrap onClick={()=>{router.push("/my-page")}}>
           <UserIcon />
       </IconWrap>
     </Container>

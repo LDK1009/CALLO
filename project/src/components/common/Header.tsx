@@ -4,15 +4,35 @@ import styled from "styled-components";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const router = useRouter();
+
   return (
     <Container>
-      <Img src="/img/로고 배너1.png" />
-      <ArrowBackIosNewOutlinedIcon />
+      <Img
+        src="/img/로고 배너1.png"
+        onClick={() => {
+          router.push("/");
+        }}
+      />
+      <ArrowBackIosNewOutlinedIcon
+        onClick={() => {
+          router.back();
+        }}
+      />
       <RightIconsGroup>
-        <SearchOutlinedIcon />
-        <ShoppingBagOutlinedIcon />
+        <SearchOutlinedIcon
+          onClick={() => {
+            router.push("/search");
+          }}
+        />
+        <ShoppingBagOutlinedIcon
+          onClick={() => {
+            router.push("/cart");
+          }}
+        />
       </RightIconsGroup>
     </Container>
   );
