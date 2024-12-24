@@ -16,5 +16,4 @@ const Main = () => {
 export default Main;
 
 const Conatainer = styled.div`
-  padding-top: 50px;
 `;

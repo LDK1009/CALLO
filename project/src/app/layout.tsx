@@ -6,6 +6,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import ThemeRegistry from "@/components/common/ThemeRegistry";
 import GlobalStyles from "@/styles/GlobalStyles";
 import InfoModal from "@/components/common/InfoModal";
+import ContentContainer from "@/components/common/ContentContainer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,7 +27,7 @@ export default function RootLayout({
             <ThemeRegistry>
               <InfoModal />
               <Header />
-              {children}
+              <ContentContainer>{children}</ContentContainer>
               <AppBar />
             </ThemeRegistry>
           </AppRouterCacheProvider>
