@@ -4,7 +4,7 @@ import { ProductType } from "@/types/store/product.type";
 import { ShoppingBagOutlined } from "@mui/icons-material";
 import { Typography } from "@mui/material";
 import Link from "next/link";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Product = ({ info }: { info: ProductType }) => {
   const formatNumber = (value: number): string => {
@@ -17,6 +17,7 @@ const Product = ({ info }: { info: ProductType }) => {
     <Link href={info.link} target="_blank" rel="noopener noreferrer">
       <Container>
         <ImgNutritionalWrap>
+          <ScrollAnimationBall />
           <Img src={info.src} alt="" />
           <Nutritional>
             <TypographyWrap>
@@ -62,6 +63,7 @@ const Container = styled.div`
 const ImgNutritionalWrap = styled.div`
   width: 100%;
   display: flex;
+  position: relative;
   scroll-snap-type: x mandatory;
   overflow-x: auto;
   /* 스크롤바 제거 */
@@ -70,6 +72,33 @@ const ImgNutritionalWrap = styled.div`
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari */
   }
+`;
+
+const scrollBallAnimation = keyframes`
+  0% {
+    opacity: 0;
+    transform:translateX(0px);
+  }
+  50% {
+    opacity: 1;
+    transform:translateX(0px);
+  }
+  100% {
+    opacity: 1;
+    transform:translateX(-40px);
+  }
+`;
+
+const ScrollAnimationBall = styled.div`
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  opacity: 0;
+  bottom: 12px;
+  right: 12px;
+  border-radius: 100%;
+  background-color: var(--gray);
+  animation: ${scrollBallAnimation} 2.5s ease-in-out 2;
 `;
 
 const Img = styled.img`
@@ -111,7 +140,7 @@ const ShoppingIcon = styled(ShoppingBagOutlined)`
 `;
 
 const Name = styled(Typography)`
-  align-self:flex-start;
+  align-self: flex-start;
   display: -webkit-box; /* 플렉스 박스처럼 동작 */
   -webkit-box-orient: vertical; /* 수직 방향으로 텍스트 정렬 */
   overflow: hidden; /* 넘치는 텍스트 숨김 */
