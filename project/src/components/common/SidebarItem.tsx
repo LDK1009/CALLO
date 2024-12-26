@@ -54,6 +54,7 @@ const Container = styled.div<ContainerType>`
   align-items: center;
   padding: 0px 12px;
   font-size: 16px;
+  font-weight: ${({ $isSelect }) => ($isSelect === true ? "bold" : "normal")};
   background-color: ${({ $isSelect }) => ($isSelect === true ? "white" : "#F6F7F9")};
   color: ${({ $isSelect }) => ($isSelect === true ? "var(--black)" : "var(--gray)")};
 `;
