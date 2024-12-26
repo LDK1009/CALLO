@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <Conatainer>
       <Carousel />
-      <CategoryScroll/>
+      <CategoryScroll />
       <SearchBar />
       <PopularSearches />
       <PopularProduct />
