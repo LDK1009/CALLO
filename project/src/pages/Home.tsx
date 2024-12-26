@@ -6,12 +6,10 @@ import PopularSearches from "@/components/home/PopularSearches";
 import SearchBar from "@/components/home/SearchBar";
 import CategoryScroll from "@/components/home/CategoryScroll";
 import styled from "styled-components";
-import Sidebar from "@/components/common/Sidebar";
 
 const Home = () => {
   return (
     <Conatainer>
-      <Sidebar/>
       <Carousel />
       <CategoryScroll/>
       <SearchBar />

@@ -2,23 +2,29 @@
 
 import * as React from "react";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-import Button from "@mui/material/Button";
 import { useSidebarStore } from "@/store/sidebarStore";
 import SidebarItem from "./SidebarItem";
 import styled from "styled-components";
 
 const Sidebar = () => {
-  const { items, isOpen, open, close } = useSidebarStore();
+  const { items, items2, isOpen, open, close } = useSidebarStore();
+  const isSecondOpen = useSidebarStore((state) => state.isSecondOpen);
 
   const RenderMenuArr = items.map((el, idx) => {
-    return <SidebarItem key={idx} index={idx} text={el.text} isSelect={el.isSelect} query={el.query} />;
+    return <SidebarItem key={idx} index={idx} text={el.text} isSelect={el.isSelect} query={el.query} type="major" />;
+  });
+
+  const RenderMenuArr2 = items2.map((el, idx) => {
+    return <SidebarItem key={idx} index={idx} text={el.text} isSelect={el.isSelect} query={el.query} type="middle" />;
   });
 
   return (
     <>
-      <Button onClick={() => open()}>사이드바 버튼</Button>
       <Container open={isOpen} onClose={close} onOpen={open}>
-        {RenderMenuArr}
+        <ItemContainer>
+          <MajorCategoryContainer>{RenderMenuArr}</MajorCategoryContainer>
+          {isSecondOpen && <MiddleCategoryContainer>{RenderMenuArr2}</MiddleCategoryContainer>}
+        </ItemContainer>
       </Container>
     </>
   );
@@ -32,3 +38,11 @@ const Container = styled(SwipeableDrawer)`
     background-color: white;
   }
 `;
+
+const ItemContainer = styled.div`
+  display: flex;
+`;
+
+const MajorCategoryContainer = styled.div``;
+
+const MiddleCategoryContainer = styled.div``;

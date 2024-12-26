@@ -7,6 +7,7 @@ import ThemeRegistry from "@/components/common/ThemeRegistry";
 import GlobalStyles from "@/styles/GlobalStyles";
 import InfoModal from "@/components/common/InfoModal";
 import ContentContainer from "@/components/common/ContentContainer";
+import Sidebar from "@/components/common/Sidebar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,6 +27,7 @@ export default function RootLayout({
           <AppRouterCacheProvider>
             <ThemeRegistry>
               <InfoModal />
+              <Sidebar/>
               <Header />
               <ContentContainer>{children}</ContentContainer>
               <AppBar />

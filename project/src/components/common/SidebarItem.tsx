@@ -2,26 +2,38 @@
 
 import { useProductStore } from "@/store";
 import { useSidebarStore } from "@/store/sidebarStore";
+import { useRouter } from "next/navigation";
 import styled from "styled-components";
 
 type PropsType = {
-  index : number;
+  index: number;
   text: string;
   isSelect: boolean;
   query: string;
+  type: string;
 };
 
-const SidebarItem = ({ index, text, isSelect, query }: PropsType) => {
+const SidebarItem = ({ index, text, isSelect, query, type }: PropsType) => {
   const setMajorCategory = useProductStore((state) => state.setMajorCategory);
-  const setItem = useSidebarStore((state)=> state.setItem);
+  const setMiddleCategory = useProductStore((state) => state.setMiddleCategory);
+  const { setItem, setItem2, close, secondOpen } = useSidebarStore();
+  const router = useRouter();
 
-  function handleClick() {
+  function majorHandleClick() {
     setMajorCategory(query);
     setItem(index);
+    secondOpen();
+  }
+
+  function middleHandleClick() {
+    setMiddleCategory(query);
+    setItem2(index);
+    router.push("/main");
+    close();
   }
 
   return (
-    <Container onClick={handleClick} $isSelect={isSelect}>
+    <Container onClick={type === "major" ? majorHandleClick : middleHandleClick} $isSelect={isSelect}>
       {text}
     </Container>
   );
