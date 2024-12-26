@@ -6,15 +6,17 @@ import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import PentagonOutlinedIcon from "@mui/icons-material/PentagonOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import { useRouter } from "next/navigation";
+import { useSidebarStore } from "@/store/sidebarStore";
 
 const AppBar = () => {
   const router = useRouter();
+  const { open } = useSidebarStore();
   
   return (
     <Container>
       <LogoImg src="/img/로고1.png" onClick={()=>{router.push("/")}}/>
       {/* 메뉴 */}
-      <IconWrap onClick={()=>{router.push("/")}}>
+      <IconWrap onClick={open}>
           <MenuIcon />
       </IconWrap>
       {/* 게시글 */}
