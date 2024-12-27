@@ -40,6 +40,7 @@ const CheckBox = styled(Checkbox)`
     color: var(--main-color);
   }
 `;
+
 const Text = styled.div`
   font-size: 16px;
 `;
