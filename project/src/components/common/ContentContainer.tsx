@@ -9,5 +9,5 @@ const ContentContainer = ({ children }: { children: React.ReactNode }) => {
 export default ContentContainer;
 
 const Container = styled.div`
-  padding-top:50px;
+  padding:50px 0px;
 `;
