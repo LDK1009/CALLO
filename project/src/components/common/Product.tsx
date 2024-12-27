@@ -1,5 +1,7 @@
 "use client";
 
+import useCarts from "@/hooks/cart/useCarts";
+import { useAuthStore } from "@/store";
 import { ProductType } from "@/types/store/product.type";
 import { ShoppingBagOutlined } from "@mui/icons-material";
 import { Typography } from "@mui/material";
@@ -7,10 +9,24 @@ import Link from "next/link";
 import styled, { keyframes } from "styled-components";
 
 const Product = ({ info }: { info: ProductType }) => {
+  const { handlePostCarts } = useCarts();
+  const { uid } = useAuthStore();
+
+  function shopingIconClick(e: React.MouseEvent<SVGSVGElement, MouseEvent>) {
+    e.preventDefault(); // 기본 동작 중단 (리다이렉션 방지)
+    console.log(info.id);
+    handlePostCarts({
+      product_id: info.id,
+      user_id: uid,
+    });
+  }
+
+  // 숫자 포맷팅
   const formatNumber = (value: number): string => {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
+  // 영양소 데이터 비구조화 할당
   const { nutritional } = info;
 
   return (
@@ -30,12 +46,7 @@ const Product = ({ info }: { info: ProductType }) => {
         </ImgNutritionalWrap>
         <HeadTextWrap>
           <Typography variant="body1">BEST</Typography>
-          <ShoppingIcon
-            onClick={(e) => {
-              e.preventDefault(); // 기본 동작 중단 (리다이렉션 방지)
-              alert("개발중인 기능입니다!");
-            }}
-          />
+          <ShoppingIcon onClick={(e) => shopingIconClick(e)} />
         </HeadTextWrap>
         <Name variant="body1">{info.name}</Name>
         <PriceWrap>
