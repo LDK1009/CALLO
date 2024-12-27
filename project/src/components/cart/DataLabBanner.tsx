@@ -1,12 +1,15 @@
 "use client";
 
 import { PentagonOutlined } from "@mui/icons-material";
+import { useRouter } from "next/navigation";
 import styled from "styled-components";
 
 const DataLabBanner = () => {
+  const router = useRouter();
+
   return (
     <Container>
-      <Banner>
+      <Banner onClick={() => router.push("/data-lab")}>
         <Icon />
         <Text>
           데이터랩으로
