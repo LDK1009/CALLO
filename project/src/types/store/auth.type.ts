@@ -1,10 +1,10 @@
-export type AuthState = {
+export type AuthStoreType = {
   isLogin: boolean;
   setIsLogin: (value: boolean) => void;
-  userId: string | null;
-  userInfo: UserInfo | null;
-  login: (id: string) => void;
-  logout: () => void;
+  uid: string;
+  setUid: (value: string | undefined) => void;
+  email: string;
+  setEmail: (value: string | undefined) => void;
 };
 
 export type UserInfo = {

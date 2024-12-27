@@ -1,5 +1,3 @@
-import { supabase } from "@/lib/supabaseClient";
-import { useState } from "react";
 import { signIn } from "@/services/auth/signIn";
 import { signInType } from "@/types/auth/login.type";
 import { useAuthStore, useModalStore } from "@/store";
@@ -9,10 +7,9 @@ import { signUp } from "@/services/auth/signUp";
 import { getSession } from "@/services/auth/session";
 
 const useAuth = () => {
-  const [uuid, setUuid] = useState<string>();
   const { open } = useModalStore();
   const router = useRouter();
-  const { isLogin, setIsLogin } = useAuthStore();
+  const { isLogin, setIsLogin, setUid, setEmail } = useAuthStore();
 
   // 로그인 여부 판단
   async function handleIsLogin() {
@@ -35,26 +32,14 @@ const useAuth = () => {
     }
   }
 
-  // 유저의 UUID 가져오기
-  async function getUuid() {
-    const {
-      data: { user },
-      error,
-    } = await supabase.auth.getUser();
-
-    if (error) {
-      console.error("사용자 UUID 가져오기 실패:", error.message);
-      return null;
-    }
-
-    setUuid(user?.id); // UUID 반환
-  }
-
   // 로그인
   async function handleSignIn({ email, password }: signInType) {
-    const { error } = await signIn({ email, password });
+    const { data, error } = await signIn({ email, password });
 
     if (!error) {
+      setIsLogin(true);
+      setEmail(data.user.email);
+      setUid(data.user.id);
       router.push("/");
     } else {
       open({
@@ -95,7 +80,7 @@ const useAuth = () => {
     }
   }
 
-  return { isLogin, uuid, handleIsLogin, getUuid, handleSignIn, handleSignUp };
+  return { isLogin, handleIsLogin, handleSignIn, handleSignUp };
 };
 
 export default useAuth;
