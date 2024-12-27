@@ -1,23 +1,38 @@
-import { checkUserSession } from "@/services/auth/checkUserSession";
 import { supabase } from "@/lib/supabaseClient";
 import { useState } from "react";
 import { signIn } from "@/services/auth/signIn";
 import { signInType } from "@/types/auth/login.type";
-import { useModalStore } from "@/store";
+import { useAuthStore, useModalStore } from "@/store";
 import { useRouter } from "next/navigation";
 import { signUpType } from "@/types/auth/signUp.type";
 import { signUp } from "@/services/auth/signUp";
+import { getSession } from "@/services/auth/session";
 
 const useAuth = () => {
-  const [isLogin, setIsLogin] = useState<Promise<boolean> | null>();
   const [uuid, setUuid] = useState<string>();
   const { open } = useModalStore();
   const router = useRouter();
+  const { isLogin, setIsLogin } = useAuthStore();
 
   // 로그인 여부 판단
-  function checkLogin() {
-    const result = checkUserSession();
-    setIsLogin(result);
+  async function handleIsLogin() {
+    const { data, error } = await getSession();
+
+    // 오류 X
+    if (!error) {
+      if (data.session !== null) {
+        setIsLogin(true);
+      } else {
+        setIsLogin(false);
+      }
+    }
+    // 오류 O
+    else {
+      open({
+        title: "Error",
+        content: "세션 오류 발생",
+      });
+    }
   }
 
   // 유저의 UUID 가져오기
@@ -37,14 +52,15 @@ const useAuth = () => {
 
   // 로그인
   async function handleSignIn({ email, password }: signInType) {
-    const error = await signIn({ email, password });
-    if (error) {
+    const { error } = await signIn({ email, password });
+
+    if (!error) {
+      router.push("/");
+    } else {
       open({
         title: "Error",
         content: "로그인 에러 발생",
       });
-    } else {
-      router.push("/");
     }
   }
 
@@ -79,7 +95,7 @@ const useAuth = () => {
     }
   }
 
-  return { isLogin, uuid, checkLogin, getUuid, handleSignIn, handleSignUp };
+  return { isLogin, uuid, handleIsLogin, getUuid, handleSignIn, handleSignUp };
 };
 
 export default useAuth;

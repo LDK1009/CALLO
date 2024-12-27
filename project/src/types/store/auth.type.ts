@@ -1,5 +1,6 @@
 export type AuthState = {
   isLogin: boolean;
+  setIsLogin: (value: boolean) => void;
   userId: string | null;
   userInfo: UserInfo | null;
   login: (id: string) => void;
