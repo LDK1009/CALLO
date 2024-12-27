@@ -1,7 +1,9 @@
+import DataLab from "@/pages/DataLab";
+
 const page = () => {
     return (
         <div>
-            데이터랩 페이지            
+            <DataLab/>
         </div>
     );
 };
