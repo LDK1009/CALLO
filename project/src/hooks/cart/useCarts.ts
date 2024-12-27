@@ -1,20 +1,39 @@
-import { useState } from "react";
-import { getCarts } from "@/services/cart/cartService";
-import { CartItem } from "@/types/store/cart.type";
+import { postCart } from "@/services/cart/cartService";
+import { PostCartType } from "@/types/services/cartService.type";
+import { useAuthStore, useModalStore } from "@/store";
 
 const useCarts = () => {
-  const [carts, setCarts] = useState<CartItem[] | null>([]);
-
-  // 장바구니 가져오기
-  const useGetCarts = async (userId: string) => {
-    const data = await getCarts(userId);
-    setCarts(data);
-  };
+  const { open: modalOpen } = useModalStore();
+  const { isLogin } = useAuthStore();
 
   // 장바구니 추가
-  // const useAddCarts = async () => {};
+  const handlePostCarts = async (postData: PostCartType) => {
+    console.log(isLogin)
+    // 로그인 O
+    if (isLogin) {
+      const result = await postCart(postData);
 
-  return { carts, useGetCarts };
+      if (result.status === 201) {
+        modalOpen({
+          title: "Success",
+          content: "상품을 장바구니에 추가했습니다! ",
+        });
+      } else {
+        modalOpen({
+          title: "Error",
+          content: "장바구니 추가 기능 오류 발생",
+        });
+      }
+    } else {
+      // 로그인 X
+      modalOpen({
+        title: "Warning",
+        content: "로그인 후 이용가능합니다.",
+      });
+    }
+  };
+
+  return { handlePostCarts };
 };
 
 export default useCarts;

@@ -1,5 +1,6 @@
 import { CartItem } from "@/types/store/cart.type";
 import { supabase } from "../../lib/supabaseClient";
+import { PostCartReturnType, PostCartType } from "@/types/services/cartService.type";
 
 // GET
 // 장바구니 데이터 가져오는 함수
@@ -16,4 +17,10 @@ export async function getCarts(userId: string): Promise<CartItem[]> {
 
   console.log("장바구니 데이터:", data);
   return data;
+}
+
+export async function postCart(postData: PostCartType): Promise<PostCartReturnType> {
+  const response = await supabase.from("carts").insert(postData);
+
+  return response;
 }
