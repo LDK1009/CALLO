@@ -36,6 +36,5 @@ const Carousel = () => {
 export default Carousel;
 
 const Container = styled(Swiper)`
-  background-color: var(--main-color);
   height: 250px;
 `;
