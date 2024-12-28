@@ -2,8 +2,28 @@
 
 import styled from "styled-components";
 import CartProduct from "./CartProduct";
+import useCarts from "@/hooks/cart/useCarts";
+import { useAuthStore, useCartStore } from "@/store";
+import { useEffect } from "react";
 
 const CartProductList = () => {
+  /////////////////
+  const { handleGetCarts } = useCarts();
+  const {items} = useCartStore();
+  const { uid } = useAuthStore();
+
+  async function testFunc() {
+    await handleGetCarts(uid);
+  }
+
+  useEffect(() => {
+    if (uid) {
+      testFunc();
+    }
+  }, [uid]);
+
+  ////////////////
+
   const cartProducts = [
     {
       name: "코카콜라 제로 350mL 24개",
@@ -137,7 +157,7 @@ const CartProductList = () => {
     },
   ];
 
-  const RenderCartProducts = cartProducts.map((el, idx) => {
+  const RenderCartProducts = items.map((el, idx) => {
     return <CartProduct key={idx} info={el} />;
   });
 

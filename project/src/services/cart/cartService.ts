@@ -1,22 +1,21 @@
-import { CartItem } from "@/types/store/cart.type";
 import { supabase } from "../../lib/supabaseClient";
-import { PostCartReturnType, PostCartType } from "@/types/services/cartService.type";
+import { GetCartsReturnType, PostCartReturnType, PostCartType } from "@/types/services/cartService.type";
 
 // GET
 // 장바구니 데이터 가져오는 함수
-export async function getCarts(userId: string): Promise<CartItem[]> {
-  const { data, error } = await supabase
+export async function getCarts(userId: string): Promise<GetCartsReturnType> {
+  const response = await supabase
     .from("carts") // cart 테이블
-    .select("*")
+    .select(
+      `
+      products(*)
+    `
+    )
     .eq("user_id", userId);
 
-  if (error) {
-    console.error("장바구니 데이터 가져오기 실패:", error.message);
-    return [];
-  }
+  const returnData = response.data?.map(({ products }) => products);
 
-  console.log("장바구니 데이터:", data);
-  return data;
+  return { data: returnData, error: response.error };
 }
 
 export async function postCart(postData: PostCartType): Promise<PostCartReturnType> {

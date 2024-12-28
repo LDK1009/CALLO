@@ -1,6 +1,7 @@
 // ErrorType.ts
 export type PostgrestError = {
-  message: string; // 에러 메시지
-  code?: string; // 상태 코드 (옵션)
-  details?: string; // 추가 디테일 정보 (옵션)
-};
+  message: string; // 오류 메시지
+  details?: string; // 오류 상세 정보
+  hint?: string; // 오류 힌트
+  code?: string; // 오류 코드
+} | null; // 오류 정보 (없을 경우 null)

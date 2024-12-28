@@ -1,14 +1,29 @@
-import { postCart } from "@/services/cart/cartService";
+import { getCarts, postCart } from "@/services/cart/cartService";
 import { PostCartType } from "@/types/services/cartService.type";
-import { useAuthStore, useModalStore } from "@/store";
+import { useAuthStore, useCartStore, useModalStore } from "@/store";
 
 const useCarts = () => {
   const { open: modalOpen } = useModalStore();
   const { isLogin } = useAuthStore();
+  const { setItems } = useCartStore();
+
+  // 장바구니 가져오기
+  const handleGetCarts = async (uid: string) => {
+    const { data, error } = await getCarts(uid);
+
+    if (!error) {
+      setItems(data);
+    } else {
+      modalOpen({
+        title: "Error",
+        content: "장바구니 가져오기 오류 발생",
+      });
+    }
+  };
 
   // 장바구니 추가
   const handlePostCarts = async (postData: PostCartType) => {
-    console.log(isLogin)
+    console.log(isLogin);
     // 로그인 O
     if (isLogin) {
       const result = await postCart(postData);
@@ -33,7 +48,7 @@ const useCarts = () => {
     }
   };
 
-  return { handlePostCarts };
+  return { handleGetCarts, handlePostCarts };
 };
 
 export default useCarts;

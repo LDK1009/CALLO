@@ -1,7 +1,8 @@
+import { ProductType } from "./product.type";
+
 export type CartState = {
-  items: CartItem[];
-  addItem: (item: CartItem) => void;
-  removeItem: (id: number) => void;
+  items: CartItem[] | null;
+  setItems: (items: ProductType[][] | undefined) => void;
 };
 
 export type CartItem = {
