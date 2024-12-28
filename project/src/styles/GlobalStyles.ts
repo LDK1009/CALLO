@@ -6,12 +6,12 @@ const GlobalStyles = createGlobalStyle`
   :root {
   /* 기본 색상 */
   --main-color: #A4BE7B;
+  --serve-color1 : #285430;
   
   /* 서브 색상 (보조 색상) */
   --secondary-color: #FFFFFF;
   --third-color: #FFA726; 
 
-  --test:#285430;
   --black: #000000;
   --gray : #777777;
   --light-gray : #CCCCCC;

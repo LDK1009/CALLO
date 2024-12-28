@@ -1,19 +1,24 @@
+import { useModalStore } from "@/store";
 import { FormControl, MenuItem, Select } from "@mui/material";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const SelectDropDown = () => {
   const selectArr = [
-    { text: "인기 검색어1", value: 10 },
-    { text: "인기 검색어2", value: 20 },
-    { text: "인기 검색어3", value: 30 },
-    { text: "인기 검색어4", value: 40 },
-    { text: "인기 검색어5", value: 50 },
-    { text: "인기 검색어6", value: 60 },
-    { text: "인기 검색어7", value: 70 },
-    { text: "인기 검색어8", value: 80 },
-    { text: "인기 검색어9", value: 90 },
-    { text: "인기 검색어10", value: 100 },
+    { text: "라라스윗", value: 0 },
+    { text: "빵", value: 1 },
+    { text: "제로 콜라", value: 2 },
+    { text: "아이스크림", value: 3 },
+    { text: "라면", value: 4 },
+    { text: "스테비아", value: 5 },
+    { text: "곤약젤리", value: 6 },
+    { text: "호떡", value: 7 },
+    { text: "케이크", value: 8 },
+    { text: "요거트", value: 9 },
   ];
+  const [i, setI] = useState(0);
+
+  const {open : modalOpen} = useModalStore();
 
   const selects = selectArr.map((el, idx) => {
     return (
@@ -23,9 +28,25 @@ const SelectDropDown = () => {
     );
   });
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setI((prev) => (prev + 1) % 10);
+    }, 2000);
+
+    // 클린업 함수로 타이머 정리
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <StyledFormControl variant="standard">
-      <Select value={10} onChange={() => {}} label="Age">
+      <Select value={i} onChange={() => {
+        modalOpen(
+          {
+            title:"Notice",
+            content:"현재 준비중인 기능입니다!"
+          }
+        );
+      }} label="Age">
         {selects}
       </Select>
     </StyledFormControl>
