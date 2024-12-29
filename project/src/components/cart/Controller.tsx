@@ -1,24 +1,35 @@
 "use client";
 
+import { useCartStore } from "@/store";
 import { DeleteOutlined } from "@mui/icons-material";
 import { Checkbox } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Controller = () => {
   const [checked, setChecked] = useState(false);
+  const { items, setItems } = useCartStore();
 
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
+  useEffect(() => {
+    const nextItems = items?.map((el, idx) => {
+      return { ...el, isSelect: checked };
+    });
+
+    setItems(nextItems);
+  }, [checked]);
 
   return (
     <Container>
       <CheckBoxAndTextWrap>
-        <CheckBox checked={checked} onChange={handleChange} inputProps={{ "aria-label": "controlled-checkbox" }} />
+        <CheckBox
+          checked={checked}
+          onChange={() => {
+            setChecked(!checked);
+          }}
+        />
         <Text>전체 선택</Text>
       </CheckBoxAndTextWrap>
-      <DeleteIcon onClick={()=>{}}/>
+      <DeleteIcon onClick={() => {}} />
     </Container>
   );
 };
