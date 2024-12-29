@@ -18,7 +18,6 @@ const Controller = () => {
         <CheckBox checked={checked} onChange={handleChange} inputProps={{ "aria-label": "controlled-checkbox" }} />
         <Text>전체 선택</Text>
       </CheckBoxAndTextWrap>
-      <DeleteIcon onClick={()=>{}}/>
     </Container>
   );
 };

@@ -2,143 +2,20 @@
 
 import styled from "styled-components";
 import DataLabProduct from "./DataLabProduct";
+import { useEffect } from "react";
+import useDataLab from "@/hooks/data-lab/useDataLab";
+import { useDataLabStore } from "@/store";
 
 const DataLabProductList = () => {
-  const dataLabProducts = [
-    {
-      name: "코카콜라 제로 350mL 24개",
-      link: "https://mui.com/material-ui/getting-started/",
-      src: "https://t3c.coupangcdn.com/thumbnails/remote/212x212ex/image/1025_amir_coupang_oct_80k/68e0/b479e672203ae019bc9955315b5d689938cedc730d74075d1c042734f2f0.jpg",
-      price: 32000,
-      price_per_piece: 800,
-      nutritional: {
-        calories: 0,
-        carbohydrate: 0,
-        protein: 0,
-        fat: 0,
-      },
-    },
-    {
-      name: "코카콜라 제로 350mL 24개",
-      link: "https://mui.com/material-ui/getting-started/",
-      src: "https://t3c.coupangcdn.com/thumbnails/remote/212x212ex/image/1025_amir_coupang_oct_80k/68e0/b479e672203ae019bc9955315b5d689938cedc730d74075d1c042734f2f0.jpg",
-      price: 32000,
-      price_per_piece: 800,
-      nutritional: {
-        calories: 0,
-        carbohydrate: 0,
-        protein: 0,
-        fat: 0,
-      },
-    },
-    {
-      name: "코카콜라 제로 350mL 24개",
-      link: "https://mui.com/material-ui/getting-started/",
-      src: "https://t3c.coupangcdn.com/thumbnails/remote/212x212ex/image/1025_amir_coupang_oct_80k/68e0/b479e672203ae019bc9955315b5d689938cedc730d74075d1c042734f2f0.jpg",
-      price: 32000,
-      price_per_piece: 800,
-      nutritional: {
-        calories: 0,
-        carbohydrate: 0,
-        protein: 0,
-        fat: 0,
-      },
-    },
-    {
-      name: "코카콜라 제로 350mL 24개",
-      link: "https://mui.com/material-ui/getting-started/",
-      src: "https://t3c.coupangcdn.com/thumbnails/remote/212x212ex/image/1025_amir_coupang_oct_80k/68e0/b479e672203ae019bc9955315b5d689938cedc730d74075d1c042734f2f0.jpg",
-      price: 32000,
-      price_per_piece: 800,
-      nutritional: {
-        calories: 0,
-        carbohydrate: 0,
-        protein: 0,
-        fat: 0,
-      },
-    },
-    {
-      name: "코카콜라 제로 350mL 24개",
-      link: "https://mui.com/material-ui/getting-started/",
-      src: "https://t3c.coupangcdn.com/thumbnails/remote/212x212ex/image/1025_amir_coupang_oct_80k/68e0/b479e672203ae019bc9955315b5d689938cedc730d74075d1c042734f2f0.jpg",
-      price: 32000,
-      price_per_piece: 800,
-      nutritional: {
-        calories: 0,
-        carbohydrate: 0,
-        protein: 0,
-        fat: 0,
-      },
-    },
-    {
-      name: "코카콜라 제로 350mL 24개",
-      link: "https://mui.com/material-ui/getting-started/",
-      src: "https://t3c.coupangcdn.com/thumbnails/remote/212x212ex/image/1025_amir_coupang_oct_80k/68e0/b479e672203ae019bc9955315b5d689938cedc730d74075d1c042734f2f0.jpg",
-      price: 32000,
-      price_per_piece: 800,
-      nutritional: {
-        calories: 0,
-        carbohydrate: 0,
-        protein: 0,
-        fat: 0,
-      },
-    },
-    {
-      name: "코카콜라 제로 350mL 24개",
-      link: "https://mui.com/material-ui/getting-started/",
-      src: "https://t3c.coupangcdn.com/thumbnails/remote/212x212ex/image/1025_amir_coupang_oct_80k/68e0/b479e672203ae019bc9955315b5d689938cedc730d74075d1c042734f2f0.jpg",
-      price: 32000,
-      price_per_piece: 800,
-      nutritional: {
-        calories: 0,
-        carbohydrate: 0,
-        protein: 0,
-        fat: 0,
-      },
-    },
-    {
-      name: "코카콜라 제로 350mL 24개",
-      link: "https://mui.com/material-ui/getting-started/",
-      src: "https://t3c.coupangcdn.com/thumbnails/remote/212x212ex/image/1025_amir_coupang_oct_80k/68e0/b479e672203ae019bc9955315b5d689938cedc730d74075d1c042734f2f0.jpg",
-      price: 32000,
-      price_per_piece: 800,
-      nutritional: {
-        calories: 0,
-        carbohydrate: 0,
-        protein: 0,
-        fat: 0,
-      },
-    },
-    {
-      name: "코카콜라 제로 350mL 24개",
-      link: "https://mui.com/material-ui/getting-started/",
-      src: "https://t3c.coupangcdn.com/thumbnails/remote/212x212ex/image/1025_amir_coupang_oct_80k/68e0/b479e672203ae019bc9955315b5d689938cedc730d74075d1c042734f2f0.jpg",
-      price: 32000,
-      price_per_piece: 800,
-      nutritional: {
-        calories: 0,
-        carbohydrate: 0,
-        protein: 0,
-        fat: 0,
-      },
-    },
-    {
-      name: "코카콜라 제로 350mL 24개",
-      link: "https://mui.com/material-ui/getting-started/",
-      src: "https://t3c.coupangcdn.com/thumbnails/remote/212x212ex/image/1025_amir_coupang_oct_80k/68e0/b479e672203ae019bc9955315b5d689938cedc730d74075d1c042734f2f0.jpg",
-      price: 32000,
-      price_per_piece: 800,
-      nutritional: {
-        calories: 0,
-        carbohydrate: 0,
-        protein: 0,
-        fat: 0,
-      },
-    },
-  ];
+  const {dataFetch} = useDataLab();
+  const {items} = useDataLabStore();
 
-  const RenderCartProducts = dataLabProducts.map((el, idx) => {
-    return <DataLabProduct key={idx} info={el} />;
+  useEffect(() => {
+    dataFetch();
+  }, []);
+
+  const RenderCartProducts = items?.map((el, idx) => {
+    return <DataLabProduct key={idx} info={el} index={idx}/>;
   });
 
   return <Container>{RenderCartProducts}</Container>;
