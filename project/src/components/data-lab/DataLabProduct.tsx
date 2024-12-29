@@ -4,7 +4,6 @@ import { useDataLabStore } from "@/store";
 import { CartItemType } from "@/types/store/cart.type";
 import { Checkbox, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 type PropsType = {
