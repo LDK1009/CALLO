@@ -1,5 +1,5 @@
 import { PostgrestError } from "@supabase/supabase-js";
-import { ProductType } from "../store/product.type";
+import { CartItemType } from "../store/cart.type";
 
 export type PostCartType = {
   product_id: number | undefined;
@@ -8,7 +8,7 @@ export type PostCartType = {
 };
 
 export type GetCartsReturnType = {
-  data:ProductType[][] | undefined;
+  data:CartItemType[][] | undefined;
   error: PostgrestError | null;
 };
 

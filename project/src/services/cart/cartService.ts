@@ -13,7 +13,10 @@ export async function getCarts(userId: string): Promise<GetCartsReturnType> {
     )
     .eq("user_id", userId);
 
-  const returnData = response.data?.map(({ products }) => products);
+  // 데이터 변환
+  const returnData = response.data?.map((cart) => {
+    return { ...cart.products, isSelect: false };
+  });
 
   return { data: returnData, error: response.error };
 }
