@@ -1,8 +1,8 @@
 import { ProductType } from "./product.type";
 
-export type CartState = {
+export type CartStoreType = {
   items: CartItemType[] | null;
-  setItems: (items: ProductType[][] | undefined) => void;
+  setItems: (items: CartItemType[] | undefined) => void;
 };
 
 export type CartItemType = ProductType &{

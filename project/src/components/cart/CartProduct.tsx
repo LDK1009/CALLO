@@ -1,18 +1,23 @@
 "use client";
 
-import { ProductType } from "@/types/store/product.type";
+import { useCartStore } from "@/store";
+import { CartItemType } from "@/types/store/cart.type";
 import { Checkbox, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import styled, { keyframes } from "styled-components";
 
-const CartProduct = ({ info }: { info: ProductType }) => {
-  const [checked, setChecked] = useState(false);
+type PropsType = { info: CartItemType; index: number };
 
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
+const CartProduct = ({ info, index }: PropsType) => {
+  const {items, setItems} = useCartStore();
 
+  function checkBoxChange(i : number){
+    const nextItems = items?.map((el, elIdx)=>{
+      return i === elIdx ? {...el, isSelect : !el.isSelect} : el
+    });
+    setItems(nextItems);
+  }
+  
   const formatNumber = (value: number): string => {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -45,7 +50,7 @@ const CartProduct = ({ info }: { info: ProductType }) => {
           </PiecePriceWrap>
         </PriceWrap>
       </TextWrap>
-      <CheckBox checked={checked} onChange={handleChange} inputProps={{ "aria-label": "controlled-checkbox" }} />
+      <CheckBox checked={info.isSelect} onChange={() => {checkBoxChange(index)}} />
     </Container>
   );
 };
