@@ -16,3 +16,8 @@ export type PostCartReturnType = {
   status: number;
   statusText: string;
 };
+
+export type DeleteCartsType = {
+  user_id : string;
+  product_ids : (number | undefined)[]; 
+}

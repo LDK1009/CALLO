@@ -1,5 +1,6 @@
 "use client";
 
+import useCarts from "@/hooks/cart/useCarts";
 import { useCartStore } from "@/store";
 import { DeleteOutlined } from "@mui/icons-material";
 import { Checkbox } from "@mui/material";
@@ -9,9 +10,10 @@ import styled from "styled-components";
 const Controller = () => {
   const [checked, setChecked] = useState(false);
   const { items, setItems } = useCartStore();
+  const { handleDeleteCarts } = useCarts();
 
   useEffect(() => {
-    const nextItems = items?.map((el, idx) => {
+    const nextItems = items?.map((el) => {
       return { ...el, isSelect: checked };
     });
 
@@ -29,7 +31,7 @@ const Controller = () => {
         />
         <Text>전체 선택</Text>
       </CheckBoxAndTextWrap>
-      <DeleteIcon onClick={() => {}} />
+      <DeleteIcon onClick={handleDeleteCarts} />
     </Container>
   );
 };

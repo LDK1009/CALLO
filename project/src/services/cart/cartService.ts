@@ -1,5 +1,10 @@
 import { supabase } from "../../lib/supabaseClient";
-import { GetCartsReturnType, PostCartReturnType, PostCartType } from "@/types/services/cartService.type";
+import {
+  DeleteCartsType,
+  GetCartsReturnType,
+  PostCartReturnType,
+  PostCartType,
+} from "@/types/services/cartService.type";
 
 // GET
 // 장바구니 데이터 가져오는 함수
@@ -23,6 +28,12 @@ export async function getCarts(userId: string): Promise<GetCartsReturnType> {
 
 export async function postCart(postData: PostCartType): Promise<PostCartReturnType> {
   const response = await supabase.from("carts").insert(postData);
+
+  return response;
+}
+
+export async function deleteCarts({ user_id, product_ids }: DeleteCartsType) {
+  const response = await supabase.from("carts").delete().eq("user_id", user_id).in("product_id", product_ids);
 
   return response;
 }
