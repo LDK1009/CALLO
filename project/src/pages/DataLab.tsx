@@ -1,23 +1,13 @@
 "use client";
 
-import Controller from "@/components/data-lab/Controller";
-import DataLabProductList from "@/components/data-lab/DataLabProductList";
-import LabButton from "@/components/data-lab/LabButton";
 import { useAuthStore } from "@/store";
 import SignIn from "./SignIn";
+import DataLabPageContainer from "@/components/data-lab/DataLabPageContainer";
 
 const DataLab = () => {
   const { isLogin } = useAuthStore();
 
-  return isLogin ? (
-    <div>
-      <Controller />
-      <DataLabProductList />
-      <LabButton />
-    </div>
-  ) : (
-    <SignIn />
-  );
+  return isLogin ? <DataLabPageContainer /> : <SignIn />;
 };
 
 export default DataLab;

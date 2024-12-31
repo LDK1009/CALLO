@@ -1,12 +1,26 @@
 "use client";
 
+import { useDataLabResultStore, useDataLabStore } from "@/store";
 import { PentagonOutlined } from "@mui/icons-material";
 import styled from "styled-components";
 
 const LabButton = () => {
+  const {items} = useDataLabStore();
+  const {setIsOpen, setItems : setResultItems} = useDataLabResultStore();
+
+  // 선택된 아이템만 필터링
+  function filterSelectedItems(){
+    const returnItems = items?.filter((el)=>el.isSelect === true);
+    return returnItems;
+  }
+
   return (
     <Container>
-      <CompareButton onClick={() => {}}>
+      <CompareButton onClick={() => {
+        const resultItems = filterSelectedItems();
+        setResultItems(resultItems)
+        setIsOpen(true);
+      }}>
         <Icon />
         <Text>영양성분 비교</Text>
       </CompareButton>
