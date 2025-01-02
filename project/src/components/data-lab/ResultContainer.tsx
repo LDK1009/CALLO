@@ -4,6 +4,7 @@ import { useDataLabResultStore } from "@/store";
 import styled from "styled-components";
 import ResultItem from "./ResultItem";
 import ResultSortSelect from "./ResultSortSelect";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
 const ResultContainer = () => {
   const { items, setIsOpen } = useDataLabResultStore();
@@ -14,13 +15,11 @@ const ResultContainer = () => {
 
   return (
     <Container>
-      <button
+      <CancleIcon
         onClick={() => {
           setIsOpen(false);
         }}
-      >
-        닫기
-      </button>
+      />
       <ResultSortSelect />
       {RenderItems}
     </Container>
@@ -33,8 +32,15 @@ const Container = styled.div`
   width: 100%;
   height: auto;
   padding: 16px;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 16px;
+`;
+
+const CancleIcon = styled(CloseOutlinedIcon)`
+  position: absolute;
+  top: 8px;
+  right: 8px;
 `;

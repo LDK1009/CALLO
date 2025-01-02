@@ -30,6 +30,7 @@ export default ResultSortSelect;
 
 const StyledFormControl = styled(FormControl)`
   width: 100%;
+  margin-top: 16px !important;
 `;
 
 const StyledInputLabel = styled(InputLabel)`
