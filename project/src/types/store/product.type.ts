@@ -22,6 +22,7 @@ export type ProductType = {
 };
 
 export type Nutritional = {
+  [key: string]: number;
   calories: number;
   carbohydrate: number;
   protein: number;

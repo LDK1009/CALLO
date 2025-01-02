@@ -1,5 +1,6 @@
 "use client";
 
+import { useDataLabResultStore } from "@/store";
 import { DataLabItemType } from "@/types/store/dataLab.type";
 import styled from "styled-components";
 
@@ -7,6 +8,8 @@ type PropsType = {
   info: DataLabItemType | undefined;
 };
 const ResultItem = ({ info }: PropsType) => {
+  const { sort, unit } = useDataLabResultStore();
+
   return (
     <Container>
       <ImgAndNameWrap>
@@ -14,8 +17,8 @@ const ResultItem = ({ info }: PropsType) => {
         <Name>{info?.name}</Name>
       </ImgAndNameWrap>
       <NutritionalAndUnitWrap>
-        <Nutritional>{info?.nutritional?.calories}</Nutritional>
-        <Unit>Kcal</Unit>
+        <Nutritional>{typeof sort === "string" && info?.nutritional[sort]}</Nutritional>
+        <Unit>{unit}</Unit>
       </NutritionalAndUnitWrap>
     </Container>
   );

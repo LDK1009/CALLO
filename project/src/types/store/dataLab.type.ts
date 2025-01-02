@@ -5,6 +5,6 @@ export type DataLabStoreType = {
   setItems: (items: DataLabItemType[] | null | undefined) => void;
 };
 
-export type DataLabItemType = ProductType &{
-  isSelect : boolean;
+export type DataLabItemType = ProductType & {
+  isSelect: boolean;
 };

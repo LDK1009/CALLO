@@ -1,23 +1,19 @@
 "use client";
 
 import { useDataLabResultStore } from "@/store";
-import { useEffect } from "react";
 import styled from "styled-components";
 import ResultItem from "./ResultItem";
+import ResultSortSelect from "./ResultSortSelect";
 
 const ResultContainer = () => {
   const { items, setIsOpen } = useDataLabResultStore();
 
-  useEffect(() => {
-    console.log(items);
-  }, [items]);
-
   const RenderItems = items?.map((el, idx) => {
     return <ResultItem key={idx} info={el} />;
   });
+
   return (
     <Container>
-      결과 페이지
       <button
         onClick={() => {
           setIsOpen(false);
@@ -25,6 +21,7 @@ const ResultContainer = () => {
       >
         닫기
       </button>
+      <ResultSortSelect />
       {RenderItems}
     </Container>
   );
