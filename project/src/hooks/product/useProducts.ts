@@ -1,5 +1,4 @@
-import { getProdcts, postProdct } from "../../services/product/productService";
-import { Product } from "@/types/store/product.type";
+import { getProdcts } from "../../services/product/productService";
 import { useModalStore, useProductStore } from "@/store";
 
 const useProducts = () => {
