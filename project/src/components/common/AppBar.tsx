@@ -2,9 +2,10 @@
 
 import styled from "styled-components";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
+// import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import PentagonOutlinedIcon from "@mui/icons-material/PentagonOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { useRouter } from "next/navigation";
 import { useSidebarStore } from "@/store/sidebarStore";
 
@@ -24,14 +25,14 @@ const AppBar = () => {
       <IconWrap onClick={open}>
         <MenuIcon />
       </IconWrap>
-      {/* 게시글 */}
+      {/* 장바구니(현재) */}
+      {/* 게시글(예정) */}
       <IconWrap
         onClick={() => {
-          alert("개발중인 기능입니다!");
-          // router.push("/article")
+          router.push("/cart");
         }}
       >
-        <ArticleIcon />
+        <ShoppingBagOutlinedIcon />
       </IconWrap>
       {/* 홈 */}
       <EmptyArea />
@@ -97,7 +98,8 @@ const IconWrap = styled.div`
 
 const MenuIcon = styled(MenuOutlinedIcon)``;
 
-const ArticleIcon = styled(ArticleOutlinedIcon)``;
+// 게시글 개발 후 사용 예정
+// const ArticleIcon = styled(ArticleOutlinedIcon)``;
 
 const PentagonIcon = styled(PentagonOutlinedIcon)``;
 
