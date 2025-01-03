@@ -1,4 +1,4 @@
-import Cart from "../../pages/Cart";
+import Cart from "@/pages/Cart";
 
 const page = () => {
   return (

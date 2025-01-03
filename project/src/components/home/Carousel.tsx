@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import Image from "next/image";
 
 const Carousel = () => {
   return (
@@ -20,13 +21,13 @@ const Carousel = () => {
         }}
       >
         <SwiperSlide>
-          <img src="/배너1.png" width="100%" height="100%" />
+          <Image src="/배너1.png" alt="배너 이미지" layout="fill" objectFit="fill" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/배너2.png" width="100%" height="100%" />
+          <Image src="/배너2.png" alt="배너 이미지" layout="fill" objectFit="fill" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/배너3.png" width="100%" height="100%" />
+          <Image src="/배너3.png" alt="배너 이미지" layout="fill" objectFit="fill" />
         </SwiperSlide>
       </Container>
     </div>

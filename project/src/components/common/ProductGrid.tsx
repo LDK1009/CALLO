@@ -10,6 +10,7 @@ const ProductGrid = () => {
 
   useEffect(() => {
     handleGetProducts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [majorCategory, middleCategory]);
 
   const RenderProducts = products?.map((el, idx) => {

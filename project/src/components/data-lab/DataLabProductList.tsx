@@ -12,6 +12,7 @@ const DataLabProductList = () => {
 
   useEffect(() => {
     dataFetch();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const RenderCartProducts = items?.map((el, idx) => {

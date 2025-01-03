@@ -19,6 +19,7 @@ const CartProductList = () => {
     if (uid) {
       dataFetch();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uid]);
 
   const RenderCartProducts = items?.map((el, idx) => {

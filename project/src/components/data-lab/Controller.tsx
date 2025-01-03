@@ -15,6 +15,7 @@ const Controller = () => {
     });
 
     setItems(nextItems);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checked]);
 
   return (

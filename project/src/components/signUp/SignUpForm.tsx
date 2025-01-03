@@ -1,8 +1,8 @@
 "use client";
 
 import { ReactNode } from "react";
-import SignUpButton from "../view/SignUpButton";
 import useAuth from "@/hooks/auth/useAuth";
+import SignUpButton from "./SignUpButton";
 
 type SignUpFormProps = {
   email: string;
