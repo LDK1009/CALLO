@@ -19,7 +19,7 @@ const SignIn = () => {
   return (
     <Container>
       <ImgWrap>
-        <LogoImg src="/img/로고_배너_투명배경_메인컬러폰트_타이트.png" />
+        <LogoImg src="/img/로고 배너1.png" />
       </ImgWrap>
       <Form onSubmit={signIn}>
         <InputWrap>
@@ -50,7 +50,9 @@ const SignIn = () => {
           </SignUpButton>
         </ButtonWrap>
       </Form>
-      <FindPassword variant="caption" align="right">
+      <FindPassword variant="caption" align="right" onClick={()=>{
+        alert("개발중인 기능입니다!\nm3088787@gmail.com 으로 문의 부탁드립니다!")
+      }}>
         비밀번호 찾기
       </FindPassword>
     </Container>
