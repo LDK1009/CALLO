@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import ProductGrid from "../common/ProductGrid";
 import { Typography } from "@mui/material";
+import PopularProductGrid from "./PopularProductGrid";
 
 const PopularProduct = () => {
   return (
@@ -8,7 +8,7 @@ const PopularProduct = () => {
       <TitleContainer>
         <TitleText variant="body1">인기 상품</TitleText>
       </TitleContainer>
-      <ProductGrid />
+      <PopularProductGrid />
     </Container>
   );
 };
