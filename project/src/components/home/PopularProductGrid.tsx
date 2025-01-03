@@ -3,6 +3,7 @@ import { useProductStore } from "@/store";
 import { useEffect } from "react";
 import useProducts from "@/hooks/product/useProducts";
 import Product from "../common/Product";
+import CoupangText from "../common/CoupangText";
 
 const PopularProductGrid = () => {
   const { popularProducts } = useProductStore();
@@ -17,7 +18,12 @@ const PopularProductGrid = () => {
     return <Product key={idx} info={el} />;
   });
 
-  return <Container>{RenderProducts}</Container>;
+  return (
+    <Container>
+      {RenderProducts}
+      <CoupangText />
+    </Container>
+  );
 };
 
 export default PopularProductGrid;

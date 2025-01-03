@@ -3,6 +3,7 @@ import Product from "./Product";
 import { useProductStore } from "@/store";
 import { useEffect } from "react";
 import useProducts from "@/hooks/product/useProducts";
+import CoupangText from "./CoupangText";
 
 const ProductGrid = () => {
   const { products, majorCategory, middleCategory } = useProductStore();
@@ -10,14 +11,19 @@ const ProductGrid = () => {
 
   useEffect(() => {
     handleGetProducts();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [majorCategory, middleCategory]);
 
   const RenderProducts = products?.map((el, idx) => {
     return <Product key={idx} info={el} />;
   });
 
-  return <Container>{RenderProducts}</Container>;
+  return (
+    <Container>
+      {RenderProducts}
+      <CoupangText />
+    </Container>
+  );
 };
 
 export default ProductGrid;
