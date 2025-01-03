@@ -16,35 +16,35 @@ const MenuList = () => {
       icon: <CampaignOutlined />,
       text: "공지사항",
       onClick: () => {
-        alert("공지사항");
+        alert("개발중인 기능입니다!");
       },
     },
     {
       icon: <ContactSupportOutlined />,
       text: "1:1 문의",
       onClick: () => {
-        alert("1:1 문의");
+        alert("개발중인 기능입니다!");
       },
     },
     {
       icon: <PostAddOutlined />,
       text: "상품 추가 요청",
       onClick: () => {
-        alert("상품 추가 요청");
+        alert("개발중인 기능입니다!");
       },
     },
     {
       icon: <LogoutOutlined />,
       text: "로그아웃",
       onClick: () => {
-        alert("로그아웃");
+        alert("개발중인 기능입니다!");        
       },
     },
     {
       icon: <PersonRemoveAlt1Outlined />,
       text: "회원탈퇴",
       onClick: () => {
-        alert("회원탈퇴");
+        alert("개발중인 기능입니다!");
       },
     },
   ];

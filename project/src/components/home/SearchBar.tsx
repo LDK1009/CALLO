@@ -12,7 +12,7 @@ const SearchBar = () => {
         slotProps={{
           input: {
             startAdornment: <Image src="/img/로고1.png" alt="example" width={30} height={30} />,
-            endAdornment: <SerchIconCustom />,
+            endAdornment: <SerchIconCustom onClick={() => alert("개발중인 기능입니다!")} />,
           },
         }}
       />

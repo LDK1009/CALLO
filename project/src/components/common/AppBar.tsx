@@ -11,27 +11,45 @@ import { useSidebarStore } from "@/store/sidebarStore";
 const AppBar = () => {
   const router = useRouter();
   const { open } = useSidebarStore();
-  
+
   return (
     <Container>
-      <LogoImg src="/img/로고1.png" onClick={()=>{router.push("/")}}/>
+      <LogoImg
+        src="/img/로고1.png"
+        onClick={() => {
+          router.push("/");
+        }}
+      />
       {/* 메뉴 */}
       <IconWrap onClick={open}>
-          <MenuIcon />
+        <MenuIcon />
       </IconWrap>
       {/* 게시글 */}
-      <IconWrap onClick={()=>{router.push("/article")}}>
-          <ArticleIcon />
+      <IconWrap
+        onClick={() => {
+          alert("개발중인 기능입니다!");
+          // router.push("/article")
+        }}
+      >
+        <ArticleIcon />
       </IconWrap>
       {/* 홈 */}
       <EmptyArea />
       {/* 데이터랩 */}
-      <IconWrap onClick={()=>{router.push("/data-lab")}}>
-          <PentagonIcon />
+      <IconWrap
+        onClick={() => {
+          router.push("/data-lab");
+        }}
+      >
+        <PentagonIcon />
       </IconWrap>
       {/* 마이페이지 */}
-      <IconWrap onClick={()=>{router.push("/my-page")}}>
-          <UserIcon />
+      <IconWrap
+        onClick={() => {
+          router.push("/my-page");
+        }}
+      >
+        <UserIcon />
       </IconWrap>
     </Container>
   );

@@ -27,7 +27,8 @@ const Header = () => {
       <RightIconsGroup>
         <SearchOutlinedIcon
           onClick={() => {
-            router.push("/search");
+            alert("개발중인 기능입니다!");
+            // router.push("/search");
           }}
         />
         <ShoppingBagOutlinedIcon

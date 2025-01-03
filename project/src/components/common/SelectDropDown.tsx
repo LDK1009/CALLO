@@ -1,4 +1,3 @@
-import { useModalStore } from "@/store";
 import { FormControl, MenuItem, Select } from "@mui/material";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -17,8 +16,6 @@ const SelectDropDown = () => {
     { text: "요거트", value: 9 },
   ];
   const [i, setI] = useState(0);
-
-  const {open : modalOpen} = useModalStore();
 
   const selects = selectArr.map((el, idx) => {
     return (
@@ -39,14 +36,13 @@ const SelectDropDown = () => {
 
   return (
     <StyledFormControl variant="standard">
-      <Select value={i} onChange={() => {
-        modalOpen(
-          {
-            title:"Notice",
-            content:"현재 준비중인 기능입니다!"
-          }
-        );
-      }} label="Age">
+      <Select
+        value={i}
+        onChange={() => {
+          alert("개발중인 기능입니다!");
+        }}
+        label="Age"
+      >
         {selects}
       </Select>
     </StyledFormControl>
