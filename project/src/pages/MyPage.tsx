@@ -18,6 +18,7 @@ const MyPage = () => {
 
   useEffect(() => {
     sessionCheck();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return isLogin ? (

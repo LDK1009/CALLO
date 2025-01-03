@@ -12,6 +12,8 @@ const useCarts = () => {
     const { data, error } = await getCarts(uid);
 
     if (!error) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       setItems(data);
     } else {
       modalOpen({

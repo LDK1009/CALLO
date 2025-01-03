@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import useAuth from "@/hooks/auth/useAuth";
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import styled from "styled-components";
 
 const SignUp = () => {

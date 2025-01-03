@@ -38,6 +38,7 @@ const useDataLab = () => {
   // 장바구니 아이템 변경 추적
   useEffect(() => {
     setDataLabItems(cartItems);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartItems]);
 
   // 데이터랩 결과 정렬 변경 추적
@@ -60,6 +61,7 @@ const useDataLab = () => {
 
     unitChange(sort); // 유닛 변경
     setDataLabResultItems(nextItems);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sort]);
 
   useEffect(() => {
