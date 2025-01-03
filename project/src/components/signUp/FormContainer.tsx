@@ -1,7 +1,7 @@
 import Input from "@/components/common/Input";
 
 import React, { useState } from "react";
-import SignUpForm from "../domain/SignUpForm";
+import SignUpForm from "./SignUpForm";
 
 const FormContainer = () => {
   const [email, setEmail] = useState("");
