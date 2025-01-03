@@ -9,8 +9,12 @@ import {
   PersonRemoveAlt1Outlined,
   PostAddOutlined,
 } from "@mui/icons-material";
+import useAuth from "@/hooks/auth/useAuth";
 
 const MenuList = () => {
+
+  const {handleSignOut} = useAuth();
+
   const menuArr = [
     {
       icon: <CampaignOutlined />,
@@ -37,7 +41,7 @@ const MenuList = () => {
       icon: <LogoutOutlined />,
       text: "로그아웃",
       onClick: () => {
-        alert("개발중인 기능입니다!");        
+        handleSignOut();
       },
     },
     {

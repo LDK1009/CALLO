@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { signUpType } from "@/types/auth/signUp.type";
 import { signUp } from "@/services/auth/signUp";
 import { getSession } from "@/services/auth/session";
+import { signOut } from "@/services/auth/signOut";
 
 const useAuth = () => {
   const { open } = useModalStore();
@@ -49,6 +50,27 @@ const useAuth = () => {
     }
   }
 
+  async function handleSignOut() {
+    const {error} = await signOut();
+
+    if (!error){
+      const storageKey = "auth-storage"; // persist에서 설정한 스토리지 이름과 동일해야 함
+      localStorage.removeItem(storageKey); // localStorage에서 스토리지 삭제
+      useAuthStore.setState({
+        isLogin: false,
+        uid: "",
+        email: "",
+      }); // Zustand 상태 초기화
+    }
+    else{
+      open({
+        title: "Error",
+        content: "로그아웃 오류 발생",
+      });
+    }
+    
+  }
+
   // 회원가입
   async function handleSignUp({ email, password }: signUpType) {
     const { data, error } = await signUp({ email, password });
@@ -80,7 +102,7 @@ const useAuth = () => {
     }
   }
 
-  return { isLogin, handleIsLogin, handleSignIn, handleSignUp };
+  return { isLogin, handleIsLogin, handleSignIn,handleSignOut, handleSignUp };
 };
 
 export default useAuth;
