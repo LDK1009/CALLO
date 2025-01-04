@@ -5,8 +5,51 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
+import { useProductStore } from "@/store";
+import { useRouter } from "next/navigation";
 
 const Carousel = () => {
+  const { setMiddleCategory } = useProductStore();
+  const router = useRouter();
+
+  const slideArr = [
+    {
+      src: "/img/슬라이드 배너1.png",
+      onClick: () => {
+        setMiddleCategory("snack");
+        router.push("/main");
+      },
+    },
+    {
+      src: "/img/슬라이드 배너2.png",
+      onClick: () => {
+        setMiddleCategory("bread");
+        router.push("/main");
+      },
+    },
+    {
+      src: "/img/슬라이드 배너3.png",
+      onClick: () => {
+        setMiddleCategory("beverage");
+        router.push("/main");
+      },
+    },
+    {
+      src: "/img/슬라이드 배너4.png",
+      onClick: () => {
+        window.open("https://dune-volleyball-962.notion.site/CALLO-171bebe7ec3b80b2ae9bfe0e1c5957d2", "_blank");
+      },
+    },
+  ];
+
+  const RenderSlideArr = slideArr.map((el, idx) => {
+    return (
+      <SwiperSlide key={idx} onClick={el.onClick}>
+        <Image src={el.src} alt={`배너이미지 ${idx}`} layout="fill" objectFit="fill" />
+      </SwiperSlide>
+    );
+  });
+
   return (
     <div>
       <Container
@@ -20,15 +63,7 @@ const Carousel = () => {
           disableOnInteraction: false, // 사용자 상호작용 후에도 자동 재생 유지
         }}
       >
-        <SwiperSlide>
-          <Image src="/배너1.png" alt="배너 이미지" layout="fill" objectFit="fill" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src="/배너2.png" alt="배너 이미지" layout="fill" objectFit="fill" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src="/배너3.png" alt="배너 이미지" layout="fill" objectFit="fill" />
-        </SwiperSlide>
+        {RenderSlideArr}
       </Container>
     </div>
   );
