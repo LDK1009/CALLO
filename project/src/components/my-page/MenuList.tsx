@@ -10,10 +10,12 @@ import {
   PostAddOutlined,
 } from "@mui/icons-material";
 import useAuth from "@/hooks/auth/useAuth";
+import { useModalStore } from "@/store";
 
 const MenuList = () => {
 
   const {handleSignOut} = useAuth();
+  const {open: modalOpen} = useModalStore();
 
   const menuArr = [
     {
@@ -48,7 +50,7 @@ const MenuList = () => {
       icon: <PersonRemoveAlt1Outlined />,
       text: "회원탈퇴",
       onClick: () => {
-        alert("개발중인 기능입니다!");
+        alert("개발중인 기능입니다!\nm3088787@gmail.com 으로 문의 부탁드립니다!");
       },
     },
   ];
