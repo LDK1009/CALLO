@@ -36,10 +36,9 @@ export const metadata: Metadata = {
     follow: true,
   },
   manifest: "/manifest.json", // 추가된 부분
-  // themeColor: "#ffffff", // 추가된 부분
   icons: {
-    icon: "/icons/icon-192x192.png",
-    apple: "/icons/icon-192x192.png",
+    icon: "/img/app-icon-192.png",
+    apple: "/img/app-icon-192.png",
   },
 };
 
@@ -54,7 +53,7 @@ export default function RootLayout({
         {/* PWA 관련 메타 태그 추가 */}
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#ffffff" />
-        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+        <link rel="apple-touch-icon" href="/img/app-icon-192.png" />
       </head>
       <body>
         <GlobalStyles />
