@@ -8,14 +8,21 @@ import {
   LogoutOutlined,
   PersonRemoveAlt1Outlined,
   PostAddOutlined,
+  DownloadForOfflineOutlined,
 } from "@mui/icons-material";
 import useAuth from "@/hooks/auth/useAuth";
 
 const MenuList = () => {
-
-  const {handleSignOut} = useAuth();
+  const { handleSignOut } = useAuth();
 
   const menuArr = [
+    {
+      icon: <DownloadForOfflineOutlined />,
+      text: "앱 다운로드",
+      onClick: () => {
+        window.open("https://dune-volleyball-962.notion.site/CALLO-173bebe7ec3b8034bca3e6a138e89ecd?pvs=4", "_blank");
+      },
+    },
     {
       icon: <CampaignOutlined />,
       text: "공지사항",
