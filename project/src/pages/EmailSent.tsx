@@ -14,11 +14,11 @@ const EmailSent = () => {
       </Typography>
       <ButtonWrap>
         <LinkButton href="https://mail.naver.com/" variant="outlined">
-          <ButtonLogoImg src="/img/네이버 로고.png" alt="네이버" width={30} height={30} />
+          <ButtonLogoImg src="/img/naver-logo.png" alt="네이버" width={30} height={30} />
           <span>네이버 메일 바로가기</span>
         </LinkButton>
         <LinkButton href="https://mail.google.com/" variant="outlined">
-          <ButtonLogoImg src="/img/구글 로고.png" alt="구글" width={30} height={30} />
+          <ButtonLogoImg src="/img/google-logo.png" alt="구글" width={30} height={30} />
           <span>구글 메일 바로가기</span>
         </LinkButton>
       </ButtonWrap>

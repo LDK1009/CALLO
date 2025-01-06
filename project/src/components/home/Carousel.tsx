@@ -14,28 +14,28 @@ const Carousel = () => {
 
   const slideArr = [
     {
-      src: "/img/슬라이드 배너1.png",
+      src: "/img/slide-banner-1.png",
       onClick: () => {
         setMiddleCategory("snack");
         router.push("/main");
       },
     },
     {
-      src: "/img/슬라이드 배너2.png",
+      src: "/img/slide-banner-2.png",
       onClick: () => {
         setMiddleCategory("bread");
         router.push("/main");
       },
     },
     {
-      src: "/img/슬라이드 배너3.png",
+      src: "/img/slide-banner-3.png",
       onClick: () => {
         setMiddleCategory("beverage");
         router.push("/main");
       },
     },
     {
-      src: "/img/슬라이드 배너4.png",
+      src: "/img/slide-banner-4.png",
       onClick: () => {
         window.open("https://dune-volleyball-962.notion.site/CALLO-171bebe7ec3b80b2ae9bfe0e1c5957d2", "_blank");
       },
@@ -45,7 +45,7 @@ const Carousel = () => {
   const RenderSlideArr = slideArr.map((el, idx) => {
     return (
       <SwiperSlide key={idx} onClick={el.onClick}>
-        <Image src={el.src} alt={`배너이미지 ${idx}`} layout="fill" objectFit="fill" />
+        <Image src={el.src} alt={`배너이미지 ${idx}`} fill />
       </SwiperSlide>
     );
   });

@@ -13,7 +13,7 @@ const Header = () => {
     <Container>
       <ImgBox>
         <Img
-          src="/img/로고 배너1.png"
+          src="/img/logo-banner-1.png"
           onClick={() => {
             router.push("/");
           }}

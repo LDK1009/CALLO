@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import StyledComponentsRegistry from "@/lib/registry";
 import AppBar from "@/components/common/AppBar";
 import Header from "@/components/common/Header";
@@ -8,6 +8,10 @@ import GlobalStyles from "@/styles/GlobalStyles";
 import InfoModal from "@/components/common/InfoModal";
 import ContentContainer from "@/components/common/ContentContainer";
 import Sidebar from "@/components/common/Sidebar";
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+};
 
 export const metadata: Metadata = {
   title: "CALLO - 제로 칼로리 쇼핑몰",
@@ -19,7 +23,7 @@ export const metadata: Metadata = {
     url: "https://callo-mu.vercel.app/", // 실제 URL로 변경
     images: [
       {
-        url: "/public/img/로고 배너1.png",
+        url: "/public/img/logo-banner-1.png",
         width: 800,
         height: 600,
         alt: "CALLO 배너",
@@ -32,7 +36,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   manifest: "/manifest.json", // 추가된 부분
-  themeColor: "#ffffff", // 추가된 부분
+  // themeColor: "#ffffff", // 추가된 부분
   icons: {
     icon: "/icons/icon-192x192.png",
     apple: "/icons/icon-192x192.png",

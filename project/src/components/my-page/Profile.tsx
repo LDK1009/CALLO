@@ -15,7 +15,7 @@ const Profile = () => {
 
   return (
     <Container>
-      <Img src="/img/로고1.png" />
+      <Img src="/img/logo-1.png" />
       <BedgeIdWrap>
         <Bedge level="bronze">Bronze</Bedge>
         <Id variant="h6">{extractUsername(email)}</Id>

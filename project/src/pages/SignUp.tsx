@@ -19,7 +19,7 @@ const SignUp = () => {
   return (
     <Container>
       <ImgWrap>
-        <LogoImg src="/img/로고 배너1.png" />
+        <LogoImg src="/img/logo-banner-1.png" />
       </ImgWrap>
       <Form onSubmit={signUp}>
         <InputWrap>

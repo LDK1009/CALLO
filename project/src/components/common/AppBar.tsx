@@ -16,7 +16,7 @@ const AppBar = () => {
   return (
     <Container>
       <LogoImg
-        src="/img/로고1.png"
+        src="/img/logo-1.png"
         onClick={() => {
           router.push("/");
         }}
