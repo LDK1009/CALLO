@@ -34,7 +34,7 @@ const MenuList = () => {
       icon: <PostAddOutlined />,
       text: "상품 추가 요청",
       onClick: () => {
-        alert("개발중인 기능입니다!");
+        window.open("https://open.kakao.com/o/st9CV28g", "_blank");
       },
     },
     {
