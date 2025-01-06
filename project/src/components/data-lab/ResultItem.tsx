@@ -2,6 +2,7 @@
 
 import { useDataLabResultStore } from "@/store";
 import { DataLabItemType } from "@/types/store/dataLab.type";
+import Link from "next/link";
 import styled from "styled-components";
 
 type PropsType = {
@@ -11,16 +12,18 @@ const ResultItem = ({ info }: PropsType) => {
   const { sort, unit } = useDataLabResultStore();
 
   return (
-    <Container>
-      <ImgAndNameWrap>
-        <Img src={info?.src} alt="" />
-        <Name>{info?.name}</Name>
-      </ImgAndNameWrap>
-      <NutritionalAndUnitWrap>
-        <Nutritional>{typeof sort === "string" && info?.nutritional[sort]}</Nutritional>
-        <Unit>{unit}</Unit>
-      </NutritionalAndUnitWrap>
-    </Container>
+    <Link href={info?.link || ""} target="_blank" rel="noopener noreferrer">
+      <Container>
+        <ImgAndNameWrap>
+          <Img src={info?.src} alt="" />
+          <Name>{info?.name}</Name>
+        </ImgAndNameWrap>
+        <NutritionalAndUnitWrap>
+          <Nutritional>{typeof sort === "string" && info?.nutritional[sort]}</Nutritional>
+          <Unit>{unit}</Unit>
+        </NutritionalAndUnitWrap>
+      </Container>
+    </Link>
   );
 };
 
