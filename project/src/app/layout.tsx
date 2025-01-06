@@ -43,9 +43,7 @@ export const metadata: Metadata = {
   },
 };
 
-
-const GA_TRACKING_ID = 'G-4X7HXJYF2E';
-
+const GA_TRACKING_ID = "G-4X7HXJYF2E";
 
 export default function RootLayout({
   children,
@@ -60,11 +58,11 @@ export default function RootLayout({
         <meta name="theme-color" content="#ffffff" />
         <link rel="apple-touch-icon" href="/img/app-icon-192.png" />
       </head>
-  {/* GA4 스크립트 삽입 */}
-  <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
+      {/* GA4 스크립트 삽입 */}
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
@@ -72,14 +70,14 @@ export default function RootLayout({
                   page_path: window.location.pathname,
                 });
               `,
-            }}
-          />
+        }}
+      />
       <body>
         <GlobalStyles />
         <StyledComponentsRegistry>
           <AppRouterCacheProvider>
             <ThemeRegistry>
-              <SnackbarProviderComponent/>
+              <SnackbarProviderComponent />
               <InfoModal />
               <Sidebar />
               <Header />
