@@ -1,18 +1,26 @@
 "use client";
 
+import { useAuthStore } from "@/store";
 import { EditOutlined } from "@mui/icons-material";
 import { Typography } from "@mui/material";
 import styled from "styled-components";
 
 const Profile = () => {
+  const { email } = useAuthStore();
+
+  function extractUsername(email: string) {
+    const match = email.match(/^([^@]+)/);
+    return match ? match[1] : null; // Return username or null if no match
+  }
+
   return (
     <Container>
       <Img src="/img/로고1.png" />
       <BedgeIdWrap>
         <Bedge level="bronze">Bronze</Bedge>
-        <Id variant="h6">m3088787</Id>
+        <Id variant="h6">{extractUsername(email)}</Id>
       </BedgeIdWrap>
-      <EditWrap>
+      <EditWrap onClick={() => alert("개발중인 기능입니다!")}>
         <EditOutlined />
       </EditWrap>
     </Container>
@@ -39,6 +47,7 @@ const Img = styled.img`
 `;
 
 const BedgeIdWrap = styled.div`
+  width: 100px;
   display: flex;
   flex-direction: column;
   row-gap: 8px;
@@ -67,6 +76,9 @@ const Bedge = styled.div<BedgeType>`
 
 const Id = styled(Typography)`
   font-weight: bold !important;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const EditWrap = styled.div`
