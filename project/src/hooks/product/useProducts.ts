@@ -1,8 +1,8 @@
+import { enqueueSnackbar } from "notistack";
 import { getProdcts } from "../../services/product/productService";
-import { useModalStore, useProductStore } from "@/store";
+import { useProductStore } from "@/store";
 
 const useProducts = () => {
-  const { open } = useModalStore();
   const { majorCategory, middleCategory, setProducts, setPopularProducts } = useProductStore();
 
   // 상품 가져오기
@@ -10,10 +10,7 @@ const useProducts = () => {
     const { data, error } = await getProdcts(majorCategory, middleCategory);
 
     if (error) {
-      open({
-        title: "Error",
-        content: "상품 데이터 패칭 에러 발생",
-      });
+      enqueueSnackbar('Error : 상품 가져오기', { variant: "error" });
     } else {
       setProducts(data);
     }
@@ -26,10 +23,7 @@ const useProducts = () => {
     if (!error) {
       setPopularProducts(data);
     } else {
-      open({
-        title: "Error",
-        content: "인기 상품 데이터 패칭 에러 발생",
-      });
+      enqueueSnackbar('Error : 인기 상품 가져오기', { variant: "error" });
     }
   };
 

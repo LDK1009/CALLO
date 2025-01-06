@@ -1,9 +1,9 @@
 import { deleteCarts, getCarts, postCart } from "@/services/cart/cartService";
 import { PostCartType } from "@/types/services/cartService.type";
-import { useAuthStore, useCartStore, useModalStore } from "@/store";
+import { useAuthStore, useCartStore } from "@/store";
+import { enqueueSnackbar } from "notistack";
 
 const useCarts = () => {
-  const { open: modalOpen } = useModalStore();
   const { isLogin, uid } = useAuthStore();
   const { items, setItems } = useCartStore();
 
@@ -16,10 +16,7 @@ const useCarts = () => {
       // @ts-expect-error
       setItems(data);
     } else {
-      modalOpen({
-        title: "Error",
-        content: "장바구니 가져오기 오류 발생",
-      });
+      enqueueSnackbar("Error : 장바구니 가져오기", { variant: "error" });
     }
   };
 
@@ -31,22 +28,13 @@ const useCarts = () => {
       const result = await postCart(postData);
 
       if (result.status === 201) {
-        modalOpen({
-          title: "Success",
-          content: "상품을 장바구니에 추가했습니다! ",
-        });
+        enqueueSnackbar("상품을 장바구니에 추가했습니다!", { variant: "success" });
       } else {
-        modalOpen({
-          title: "Error",
-          content: "장바구니 추가 기능 오류 발생",
-        });
+        enqueueSnackbar("Error : 장바구니 추가", { variant: "error" });
       }
     } else {
       // 로그인 X
-      modalOpen({
-        title: "Warning",
-        content: "로그인 후 이용가능합니다.",
-      });
+      enqueueSnackbar("Warning : 로그인 후 이용가능합니다.", { variant: "warning" });
     }
   };
 
@@ -74,10 +62,7 @@ const useCarts = () => {
       console.log("삭제 완료!");
       setItems(notSelectedItems);
     } else {
-      modalOpen({
-        title: "Error",
-        content: "장바구니 삭제 오류 발생",
-      });
+      enqueueSnackbar("Error : 장바구니 삭제", { variant: "error" });
     }
   }
 

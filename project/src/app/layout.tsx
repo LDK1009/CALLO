@@ -8,6 +8,7 @@ import GlobalStyles from "@/styles/GlobalStyles";
 import InfoModal from "@/components/common/InfoModal";
 import ContentContainer from "@/components/common/ContentContainer";
 import Sidebar from "@/components/common/Sidebar";
+import SnackbarProviderComponent from "@/components/common/SnackbarProviderComponent";
 
 export const viewport: Viewport = {
   themeColor: "#ffffff",
@@ -60,6 +61,7 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <AppRouterCacheProvider>
             <ThemeRegistry>
+              <SnackbarProviderComponent/>
               <InfoModal />
               <Sidebar />
               <Header />

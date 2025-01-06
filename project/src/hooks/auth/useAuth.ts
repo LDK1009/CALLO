@@ -1,14 +1,14 @@
 import { signIn } from "@/services/auth/signIn";
 import { signInType } from "@/types/auth/login.type";
-import { useAuthStore, useModalStore } from "@/store";
+import { useAuthStore } from "@/store";
 import { useRouter } from "next/navigation";
 import { signUpType } from "@/types/auth/signUp.type";
 import { signUp } from "@/services/auth/signUp";
 import { getSession } from "@/services/auth/session";
 import { signOut } from "@/services/auth/signOut";
+import { enqueueSnackbar } from "notistack";
 
 const useAuth = () => {
-  const { open } = useModalStore();
   const router = useRouter();
   const { isLogin, setIsLogin, setUid, setEmail } = useAuthStore();
 
@@ -26,10 +26,7 @@ const useAuth = () => {
     }
     // 오류 O
     else {
-      open({
-        title: "Error",
-        content: "세션 오류 발생",
-      });
+      enqueueSnackbar('Error : 세션 오류.', { variant: "error" });
     }
   }
 
@@ -43,10 +40,7 @@ const useAuth = () => {
       setUid(data.user.id);
       router.push("/");
     } else {
-      open({
-        title: "Error",
-        content: "로그인 에러 발생",
-      });
+      enqueueSnackbar('Error : 로그인', { variant: "error" });
     }
   }
 
@@ -63,10 +57,7 @@ const useAuth = () => {
       }); // Zustand 상태 초기화
     }
     else{
-      open({
-        title: "Error",
-        content: "로그아웃 오류 발생",
-      });
+      enqueueSnackbar('Error : 로그아웃', { variant: "error" });
     }
     
   }
@@ -78,23 +69,13 @@ const useAuth = () => {
     console.log("error:", error?.code);
     // 에러 처리
     if (error) {
-      open({
-        title: "Error",
-        content: `회원가입 에러 발생
-        잠시 후 다시 시도해주세요.
-        `,
-      });
+      enqueueSnackbar('Error : 회원가입, 잠시 후 다시 시도해주세요.', { variant: "error" });
       return;
     }
 
     // 이메일 중복 검사
     if (data?.user?.role === "") {
-      open({
-        title: "Error",
-        content: `회원가입 에러 발생
-        이미 가입된 이메일입니다.
-        `,
-      });
+      enqueueSnackbar('Error : 회원가입, 이미 가입된 이메일입니다.', { variant: "error" });
     }
     // 인증 메일 발송 완료 페이지로 리다이렉트
     else {

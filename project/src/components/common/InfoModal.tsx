@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
-import { Box, Button } from "@mui/material";
+import { Alert, Box, Button } from "@mui/material";
 import { useModalStore } from "@/store";
 
 const InfoModal = () => {
@@ -26,6 +26,8 @@ const InfoModal = () => {
         <Fade in={isOpen} timeout={300}>
           {/* 모달 내부 내용 */}
           <StyledBox>
+          <Alert severity="success">{content}</Alert>
+
             <div>{title}</div>
             <div>{content}</div>
             <Button onClick={close}>닫기</Button>
@@ -47,6 +49,4 @@ const StyledBox = styled(Box)`
   width: 200px; // 박스의 너비
   background-color: white;
   border: 2px solid #000; // 검은색 테두리
-  box-shadow: 24px 24px 24px rgba(0, 0, 0, 0.2); // 그림자 효과
-  padding: 16px; // 내부 여백
 `;
