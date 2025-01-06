@@ -10,12 +10,10 @@ import {
   PostAddOutlined,
 } from "@mui/icons-material";
 import useAuth from "@/hooks/auth/useAuth";
-import { useModalStore } from "@/store";
 
 const MenuList = () => {
 
   const {handleSignOut} = useAuth();
-  const {open: modalOpen} = useModalStore();
 
   const menuArr = [
     {
