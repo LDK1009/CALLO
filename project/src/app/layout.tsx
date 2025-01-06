@@ -9,6 +9,7 @@ import InfoModal from "@/components/common/InfoModal";
 import ContentContainer from "@/components/common/ContentContainer";
 import Sidebar from "@/components/common/Sidebar";
 import SnackbarProviderComponent from "@/components/common/SnackbarProviderComponent";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const viewport: Viewport = {
   themeColor: "#ffffff",
@@ -43,8 +44,6 @@ export const metadata: Metadata = {
   },
 };
 
-const GA_TRACKING_ID = "G-4X7HXJYF2E";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -58,20 +57,6 @@ export default function RootLayout({
         <meta name="theme-color" content="#ffffff" />
         <link rel="apple-touch-icon" href="/img/app-icon-192.png" />
       </head>
-      {/* GA4 스크립트 삽입 */}
-      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_TRACKING_ID}', {
-                  page_path: window.location.pathname,
-                });
-              `,
-        }}
-      />
       <body>
         <GlobalStyles />
         <StyledComponentsRegistry>
@@ -87,6 +72,7 @@ export default function RootLayout({
           </AppRouterCacheProvider>
         </StyledComponentsRegistry>
       </body>
+      <GoogleAnalytics gaId="G-4X7HXJYF2E" />
     </html>
   );
 }
