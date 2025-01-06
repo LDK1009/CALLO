@@ -1,0 +1,21 @@
+{
+  "name": "CALLO",
+  "short_name": "CALLO",
+  "description": "제로 칼로리 푸드 플랫폼",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/img/앱 192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/앱 512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

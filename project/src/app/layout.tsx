@@ -16,10 +16,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "CALLO - 제로 칼로리 쇼핑몰",
     description: "제로 칼로리, 제로 슈가 등 다양한 카테고리를 통한 제로 식품들을 만나보세요!",
-    url: "https://example.com", // 실제 URL로 변경
+    url: "https://callo-mu.vercel.app/", // 실제 URL로 변경
     images: [
       {
-        url: "/public/img/로고 배너1.png", 
+        url: "/public/img/로고 배너1.png",
         width: 800,
         height: 600,
         alt: "CALLO 배너",
@@ -31,6 +31,12 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  manifest: "/manifest.json", // 추가된 부분
+  themeColor: "#ffffff", // 추가된 부분
+  icons: {
+    icon: "/icons/icon-192x192.png",
+    apple: "/icons/icon-192x192.png",
+  },
 };
 
 export default function RootLayout({
@@ -40,13 +46,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        {/* PWA 관련 메타 태그 추가 */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#ffffff" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+      </head>
       <body>
         <GlobalStyles />
         <StyledComponentsRegistry>
           <AppRouterCacheProvider>
             <ThemeRegistry>
               <InfoModal />
-              <Sidebar/>
+              <Sidebar />
               <Header />
               <ContentContainer>{children}</ContentContainer>
               <AppBar />

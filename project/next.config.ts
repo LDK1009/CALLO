@@ -1,10 +1,16 @@
-import type { NextConfig } from "next";
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const withPWA = require("next-pwa")({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+});
 
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
   compiler: {
-    styledComponents: true, // styled-components 설정 활성화
+    styledComponents: true, // styled-components 활성화
   },
 };
 
-export default nextConfig;
+module.exports = withPWA(nextConfig);
