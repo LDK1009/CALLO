@@ -27,7 +27,7 @@ const MenuList = () => {
       icon: <ContactSupportOutlined />,
       text: "1:1 문의",
       onClick: () => {
-        alert("개발중인 기능입니다!");
+        window.open("https://open.kakao.com/o/sUNuT28g", "_blank");
       },
     },
     {
