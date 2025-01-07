@@ -65,8 +65,6 @@ const useAuth = () => {
   // 회원가입
   async function handleSignUp({ email, password }: signUpType) {
     const { data, error } = await signUp({ email, password });
-    console.log("data:", data);
-    console.log("error:", error?.code);
     // 에러 처리
     if (error) {
       enqueueSnackbar('Error : 회원가입, 잠시 후 다시 시도해주세요.', { variant: "error" });

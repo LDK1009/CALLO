@@ -22,7 +22,6 @@ const useCarts = () => {
 
   // 장바구니 추가
   const handlePostCarts = async (postData: PostCartType) => {
-    console.log(isLogin);
     // 로그인 O
     if (isLogin) {
       const result = await postCart(postData);
@@ -59,7 +58,6 @@ const useCarts = () => {
 
     // 에러 처리
     if (!error) {
-      console.log("삭제 완료!");
       setItems(notSelectedItems);
     } else {
       enqueueSnackbar("Error : 장바구니 삭제", { variant: "error" });

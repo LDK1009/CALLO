@@ -14,7 +14,7 @@ const Product = ({ info }: { info: ProductType }) => {
 
   function shopingIconClick(e: React.MouseEvent<SVGSVGElement, MouseEvent>) {
     e.preventDefault(); // 기본 동작 중단 (리다이렉션 방지)
-    console.log(info.id);
+
     handlePostCarts({
       product_id: info.id,
       user_id: uid,

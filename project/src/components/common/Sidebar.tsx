@@ -1,14 +1,24 @@
 "use client";
 
-import * as React from "react";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { useSidebarStore } from "@/store/sidebarStore";
 import SidebarItem from "./SidebarItem";
 import styled from "styled-components";
+import useProducts from "@/hooks/product/useProducts";
+import { useProductStore } from "@/store";
+import { useEffect } from "react";
 
 const Sidebar = () => {
-  const { items, items2, isOpen, open, close } = useSidebarStore();
-  const isSecondOpen = useSidebarStore((state) => state.isSecondOpen);
+  // 커스텀훅
+  const {handleGetProducts} = useProducts();
+  // 스토어
+  const { items, items2, isOpen, isSecondOpen, open, close } = useSidebarStore();
+  const {majorCategory, middleCategory, searchString} = useProductStore();
+
+  useEffect(() => {
+    handleGetProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [majorCategory, middleCategory, searchString]);
 
   const RenderMenuArr = items.map((el, idx) => {
     return <SidebarItem key={idx} index={idx} text={el.text} isSelect={el.isSelect} query={el.query} type="major" />;

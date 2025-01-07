@@ -55,8 +55,8 @@ const Carousel = () => {
       <Container
         spaceBetween={0} // 슬라이드 간격
         slidesPerView={1} // 한 번에 보여줄 슬라이드 수
-        onSlideChange={() => console.log("Slide changed")}
-        onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={() => {}}
+        onSwiper={() => {}}
         modules={[Autoplay]}
         autoplay={{
           delay: 3000, // 3초마다 전환

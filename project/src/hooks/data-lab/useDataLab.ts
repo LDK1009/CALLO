@@ -65,7 +65,6 @@ const useDataLab = () => {
   }, [sort]);
 
   useEffect(() => {
-    console.log(dataLabResultItems);
   }, [dataLabResultItems]);
 
   return { dataFetch, handleSort };

@@ -29,7 +29,6 @@ const CategoryScrollX = () => {
       prev.map((el) => (el.query === middleCategory ? { ...el, isSelect: true } : { ...el, isSelect: false }))
     );
 
-    console.log(middleCategory);
   }, [middleCategory]);
 
   const RenderCategories = categories.map((el, idx) => {

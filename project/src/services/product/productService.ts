@@ -3,7 +3,7 @@ import { supabase } from "../../lib/supabaseClient";
 import { GetProductsResponse } from "@/types/services/productService.type";
 
 // GET
-export const getProdcts = async (majorCategory?: string, middleCategory?: string): Promise<GetProductsResponse> => {
+export const getProdcts = async (majorCategory?: string, middleCategory?: string, searchString?: string): Promise<GetProductsResponse> => {
   let query = supabase.from("products").select("*");
 
   // 조건 체이닝
@@ -16,8 +16,11 @@ export const getProdcts = async (majorCategory?: string, middleCategory?: string
   if (majorCategory && middleCategory) {
     query = query.eq("major_category", majorCategory).eq("middle_category", middleCategory);
   }
-  console.log("쿼리 실행")
-  console.log(query);
+  if(searchString){
+    const searchWords = searchString.split(" "); // 공백 기준으로 분리
+    const orQuery = searchWords.map(term => `name.ilike.%${term}%`).join(',');
+    query = query.or(orQuery);
+  }
   // 쿼리 실행
   const { data, error } = await query;
 
