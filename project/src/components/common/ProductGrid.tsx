@@ -12,11 +12,13 @@ const ProductGrid = () => {
   });
 
   return (
-    <Container>
+    <>
       <FilterText />
-      {RenderProducts}
-      <CoupangText />
-    </Container>
+      <Container>
+        {RenderProducts}
+        <CoupangText />
+      </Container>
+    </>
   );
 };
 

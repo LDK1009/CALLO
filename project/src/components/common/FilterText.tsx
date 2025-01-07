@@ -17,4 +17,5 @@ export default FilterText;
 const Container = styled.div`
   font-size: 10px;
   color: var(--gray);
+  padding: 8px;
 `;
