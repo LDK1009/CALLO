@@ -8,7 +8,7 @@ export type PostCartType = {
 };
 
 export type GetCartsReturnType = {
-  data:CartItemType[][] | undefined;
+  data: CartItemType[][] | undefined;
   error: PostgrestError | null;
 };
 
@@ -18,6 +18,6 @@ export type PostCartReturnType = {
 };
 
 export type DeleteCartsType = {
-  user_id : string;
-  product_ids : (number | undefined)[]; 
-}
+  user_id: string;
+  product_ids: (number | undefined)[];
+};

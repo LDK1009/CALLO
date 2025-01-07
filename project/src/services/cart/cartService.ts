@@ -1,14 +1,9 @@
 import { supabase } from "../../lib/supabaseClient";
-import {
-  DeleteCartsType,
-  GetCartsReturnType,
-  PostCartReturnType,
-  PostCartType,
-} from "@/types/services/cartService.type";
+import { DeleteCartsType, PostCartReturnType, PostCartType } from "@/types/services/cartService.type";
 
 // GET
 // 장바구니 데이터 가져오는 함수
-export async function getCarts(userId: string): Promise<GetCartsReturnType> {
+export async function getCarts(userId: string) {
   // 장바구니 상품 ID 배열 가져오기
   const { data: productIdData } = await supabase
     .from("carts") // cart 테이블
@@ -26,7 +21,12 @@ export async function getCarts(userId: string): Promise<GetCartsReturnType> {
     (item, index, self) => self.findIndex((obj) => obj.id === item.id) === index
   );
 
-  return { data: uniqueData, error: response.error };
+  // 데이터 변환(isSelect 프로퍼티 추가)
+  const returnData = uniqueData?.map((cart) => {
+    return { ...cart, isSelect: false };
+  });
+
+  return { data: returnData, error: response.error };
 }
 
 export async function postCart(postData: PostCartType): Promise<PostCartReturnType> {
