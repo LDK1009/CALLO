@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Product from "./Product";
 import { useProductStore } from "@/store";
 import CoupangText from "./CoupangText";
+import FilterText from "./FilterText";
 
 const ProductGrid = () => {
   const { products } = useProductStore();
@@ -12,6 +13,7 @@ const ProductGrid = () => {
 
   return (
     <Container>
+      <FilterText />
       {RenderProducts}
       <CoupangText />
     </Container>

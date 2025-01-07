@@ -14,7 +14,7 @@ type PropsType = {
 };
 
 const SidebarItem = ({ index, text, isSelect, query, type }: PropsType) => {
-  const {setMajorCategory, setMiddleCategory} = useProductStore(); 
+  const { setMajorCategory, setMiddleCategory } = useProductStore();
   const { setItem, setItem2, close, secondOpen } = useSidebarStore();
   const router = useRouter();
 
