@@ -25,12 +25,12 @@ const Header = () => {
         }}
       />
       <RightIconsGroup>
-        <SearchOutlinedIcon
+        {/* <SearchOutlinedIcon
           onClick={() => {
             alert("개발중인 기능입니다!");
             // router.push("/search");
           }}
-        />
+        /> */}
         <ShoppingBagOutlinedIcon
           onClick={() => {
             router.push("/cart");
