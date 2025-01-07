@@ -2,7 +2,6 @@ import { enqueueSnackbar } from "notistack";
 import { getProdcts } from "../../services/product/productService";
 import { useProductStore } from "@/store";
 import { getProductSearch } from "@/services/product/productSearchService";
-import { useEffect } from "react";
 
 const useProducts = () => {
   const { majorCategory, middleCategory, searchString, setProducts, setPopularProducts } = useProductStore();
@@ -39,12 +38,6 @@ const useProducts = () => {
       enqueueSnackbar("Error : 검색 상품 가져오기", { variant: "error" });
     }
   };
-
-  const { products } = useProductStore();
-
-  useEffect(() => {
-    console.log("상품 변경", products);
-  }, [products]);
 
   return { handleGetProducts, handleGetPopularProducts, handleGetProductSearch };
 };

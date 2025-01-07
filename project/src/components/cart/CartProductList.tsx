@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 const CartProductList = () => {
   const { handleGetCarts } = useCarts();
-  const {items} = useCartStore();
+  const { items } = useCartStore();
   const { uid } = useAuthStore();
 
   async function dataFetch() {
@@ -19,7 +19,7 @@ const CartProductList = () => {
     if (uid) {
       dataFetch();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uid]);
 
   const RenderCartProducts = items?.map((el, idx) => {
