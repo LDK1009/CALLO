@@ -19,4 +19,8 @@
       <guid>http://www.example.com/article-2.html</guid>
     </item>
   </channel>
+  <url>
+    <loc>https://callo-mu.vercel.app/</loc>
+    <lastmod>2025-01-08T06:06:35+00:00</lastmod>
+  </url>
 </rss>
