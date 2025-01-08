@@ -16,22 +16,33 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "CALLO - 제로 칼로리 쇼핑몰",
-  description: "제로 칼로리, 제로 슈가 등 다양한 카테고리를 통한 제로 식품들을 만나보세요!",
-  keywords: "제로 칼로리, 제로 슈가, 다이어트 식품, 칼로",
+  title: "CALLO(칼로) - 제로 칼로리 쇼핑몰",
+  description:
+    "제로 칼로리, 제로 슈가, 다이어트 간식 등 다양한 건강한 식품들을 CALLO(칼로)에서 만나보세요! 제로 칼로리 쇼핑몰의 모든 제품을 지금 확인하세요.",
+  keywords:
+    "제로 칼로리, 제로 슈가, 다이어트 식품, 칼로, 제로 칼로리 쇼핑몰, 다이어트 간식, 저칼로리 식품, 건강한 먹거리",
   openGraph: {
-    title: "CALLO - 제로 칼로리 쇼핑몰",
-    description: "제로 칼로리, 제로 슈가 등 다양한 카테고리를 통한 제로 식품들을 만나보세요!",
-    url: "https://callo-mu.vercel.app/", // 실제 URL로 변경
+    title: "CALLO(칼로) - 제로 칼로리 쇼핑몰",
+    description:
+      "제로 칼로리, 제로 슈가 등 다양한 카테고리의 제로 식품들을 CALLO에서 만나보세요. 건강한 다이어트를 위한 최고의 선택!",
+    url: "https://www.callo.store/",
     images: [
       {
-        url: "https://callo-mu.vercel.app/img/logo-1.png",
+        url: "https://www.callo.store/img/logo-1.png",
         width: 512,
         height: 512,
         alt: "CALLO 로고",
       },
     ],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@CALLO", // 실제 Twitter 계정 추가
+    title: "CALLO(칼로) - 제로 칼로리 쇼핑몰",
+    description:
+      "제로 칼로리, 제로 슈가 등 다양한 카테고리의 제로 식품들을 CALLO(칼로)에서 만나보세요!",
+    images: ["https://callo-mu.vercel.app/img/logo-1.png"],
   },
   robots: {
     index: true,

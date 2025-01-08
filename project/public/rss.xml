@@ -2,21 +2,21 @@
 <rss version="2.0">
   <channel>
     <title>사이트 이름</title>
-    <link>https://callo-mu.vercel.app/</link> 
+    <link>https://www.callo.store/</link> 
     <description>사이트 설명</description>
     <item>
       <title>콘텐츠 게시글 1</title>
-      <link>https://callo-mu.vercel.app/main</link>
+      <link>https://www.callo.store/main</link>
       <description>글 내용 전체(또는 일부)</description>
       <pubDate>발행시간</pubDate>
-      <guid>https://callo-mu.vercel.app/main</guid>
+      <guid>https://www.callo.store/main</guid>
     </item>
     <item>
       <title>콘텐츠 게시글 2</title>
-      <link>https://callo-mu.vercel.app/main</link>
+      <link>https://www.callo.store/main</link>
       <description>글 내용 전체(또는 일부)</description>
       <pubDate>발행시간</pubDate>
-      <guid>https://callo-mu.vercel.app/main</guid>
+      <guid>https://www.callo.store/main</guid>
     </item>
   </channel>
 </rss>

@@ -7,6 +7,7 @@ import { ShoppingBagOutlined } from "@mui/icons-material";
 import { Typography } from "@mui/material";
 import Link from "next/link";
 import styled, { keyframes } from "styled-components";
+import SEO from "./SEO";
 
 const Product = ({ info }: { info: ProductType }) => {
   const { handlePostCarts } = useCarts();
@@ -29,7 +30,17 @@ const Product = ({ info }: { info: ProductType }) => {
   // 영양소 데이터 비구조화 할당
   const { nutritional } = info;
 
+  const productSEO = {
+    title: "CALLO - " + info.name,
+    description: info.nutritional.calories + "상품 발견! 놓치지말고 구매하세요!",
+    keywords: "제로 칼로리, 제로 슈가, 로우 칼로리, 로우 슈가, 저당, 저칼로리, 제로 식단, 식단, 음료, 다이어트",
+    url: "https://www.callo.store/main",
+    image: info.src,
+  };
+
   return (
+    <>
+    <SEO {...productSEO} />
     <Link href={info.link} target="_blank" rel="noopener noreferrer">
       <Container>
         <ImgNutritionalWrap>
@@ -58,6 +69,8 @@ const Product = ({ info }: { info: ProductType }) => {
         </PriceWrap>
       </Container>
     </Link>
+    </>
+
   );
 };
 
