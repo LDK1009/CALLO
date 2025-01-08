@@ -56,8 +56,6 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="apple-touch-icon" href="/img/app-icon-192.png" />
-        {/* 네이버 웹마스터 사이트 소유 증빙 */}
-        <meta name="naver-site-verification" content="22a4c37f51faac7e182e6802cfb03aa1eb7b82eb" />
       </head>
       <body>
         <GlobalStyles />
