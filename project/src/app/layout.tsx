@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     url: "https://callo-mu.vercel.app/", // 실제 URL로 변경
     images: [
       {
-        url: "/img/logo-1.png",
+        url: "https://callo-mu.vercel.app/img/logo-1.png",
         width: 512,
         height: 512,
         alt: "CALLO 로고",
