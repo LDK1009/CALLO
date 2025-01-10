@@ -9,8 +9,22 @@ const Dashboard = () => {
     name: "",
     link: "",
     src: "",
-    major_category: "low_sugar",
-    middle_category: "snack",
+    major_category: "zero_calories",
+    // major_category: "zero_calories",
+    // major_category: "low_calories",
+    // major_category: "zero_sugar",
+    // major_category: "low_sugar",
+    // middle_category: "snack",
+    // middle_category: "beverage",
+    // middle_category: "snack",
+    // middle_category: "bread",
+    // middle_category: "noodle",
+    middle_category: "icecream",
+    // middle_category: "frozen",
+    // middle_category: "canned",
+    // middle_category: "rice_porridge",
+    // middle_category: "lunch_box",
+    // middle_category: "dairy",
     price: 0,
     piece: 0,
     price_per_piece: 0,
@@ -47,6 +61,7 @@ const Dashboard = () => {
 
   const postProduct = async () => {
     const { error } = await supabase.from("products").insert(formData);
+
     if (!error) {
       alert("상품 추가 성공");
     } else {
@@ -66,8 +81,8 @@ const Dashboard = () => {
       name: "",
       link: "",
       src: "",
-      major_category: "제로칼로리",
-      middle_category: "음료",
+      major_category: "zero_calories",
+      middle_category: "snack",
       price: 0,
       piece: 0,
       price_per_piece: 0,

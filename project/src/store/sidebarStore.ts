@@ -16,7 +16,7 @@ export const useSidebarStore = create<SidebarStoreType>((set) => ({
     { text: "간식", query: "snack", isSelect: false },
     { text: "빵", query: "bread", isSelect: false },
     { text: "면", query: "noodle", isSelect: false },
-    { text: "아이스크림", query: "ice_cream", isSelect: false },
+    { text: "아이스크림", query: "icecream", isSelect: false },
     { text: "냉동", query: "frozen", isSelect: false },
     { text: "통조림", query: "canned", isSelect: false },
     { text: "소스", query: "sauce", isSelect: false },

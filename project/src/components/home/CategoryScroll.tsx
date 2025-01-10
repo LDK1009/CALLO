@@ -7,7 +7,7 @@ const CategoryScroll = () => {
     { src: "/gif/snack.gif", label: "간식", query: "snack" },
     { src: "/gif/bread.gif", label: "빵", query: "bread" },
     { src: "/gif/noodle.gif", label: "면", query: "noodle" },
-    { src: "/gif/icecream.gif", label: "아이스크림", query: "ice_cream" },
+    { src: "/gif/icecream.gif", label: "아이스크림", query: "icecream" },
     { src: "/gif/frozen.gif", label: "냉동", query: "frozen" },
     { src: "/gif/canned.gif", label: "통조림", query: "canned" },
     { src: "/gif/sauce.gif", label: "소스", query: "sauce" },
