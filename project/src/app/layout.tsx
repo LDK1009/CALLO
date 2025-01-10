@@ -10,6 +10,7 @@ import ContentContainer from "@/components/common/ContentContainer";
 import Sidebar from "@/components/common/Sidebar";
 import SnackbarProviderComponent from "@/components/common/SnackbarProviderComponent";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 export const viewport: Viewport = {
   themeColor: "#ffffff",
@@ -78,6 +79,26 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="apple-touch-icon" href="/img/app-icon-192.png" />
+        {/* Google Ads 태그 추가 */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-11544522551" />
+        <Script id="google-ads-tag">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-11544522551');
+            `}
+        </Script>
+        {/* Google Ads 이벤트 스니펫 */}
+        <Script id="google-ads-event-snipet">
+          {` 
+    gtag('event', 'conversion', {
+      'send_to': 'AW-11544522551/WvQsCPKYoYEaELfe7YAr',
+      'value': 1.0,
+      'currency': 'KRW'
+      });
+  `}
+        </Script>
       </head>
       <body>
         <GlobalStyles />
