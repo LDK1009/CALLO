@@ -48,10 +48,10 @@ const Product = ({ info }: { info: ProductType }) => {
           <Img src={info.src} alt="" />
           <Nutritional>
             <TypographyWrap>
+              <Typography variant="body1">칼로리 : {nutritional.calories}</Typography>
               <Typography variant="body1">탄수화물 : {nutritional.carbohydrate}</Typography>
               <Typography variant="body1">단백질 : {nutritional.protein}</Typography>
               <Typography variant="body1">지방 : {nutritional.fat}</Typography>
-              <Typography variant="body1">칼로리 : {nutritional.calories}</Typography>
             </TypographyWrap>
           </Nutritional>
         </ImgNutritionalWrap>
