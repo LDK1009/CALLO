@@ -1,13 +1,13 @@
 "use client";
 
 import { useAuthStore } from "@/store";
-import SignIn from "./SignIn";
 import DataLabPageContainer from "@/components/data-lab/DataLabPageContainer";
+import Preview from "@/components/data-lab/Preview";
 
 const DataLab = () => {
   const { isLogin } = useAuthStore();
 
-  return isLogin ? <DataLabPageContainer /> : <SignIn />;
+  return isLogin ? <DataLabPageContainer /> : <Preview />;
 };
 
 export default DataLab;

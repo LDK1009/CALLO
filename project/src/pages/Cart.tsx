@@ -4,7 +4,7 @@ import CartProductList from "@/components/cart/CartProductList";
 import Controller from "@/components/cart/Controller";
 import DataLabBanner from "@/components/cart/DataLabBanner";
 import { useAuthStore } from "@/store";
-import SignIn from "./SignIn";
+import Preview from "@/components/cart/Preview";
 
 const Cart = () => {
   const { isLogin } = useAuthStore();
@@ -15,7 +15,7 @@ const Cart = () => {
       <CartProductList />
     </div>
   ) : (
-    <SignIn />
+    <Preview />
   );
 };
 
