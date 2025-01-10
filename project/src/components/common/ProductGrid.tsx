@@ -14,10 +14,14 @@ const ProductGrid = () => {
   return (
     <>
       <FilterText />
-      <Container>
-        {RenderProducts}
-        <CoupangText />
-      </Container>
+      {products && products?.length > 0 ? (
+        <Container>
+          {RenderProducts}
+          <CoupangText />
+        </Container>
+      ) : (
+        <Nodata>상품이 없어요😥</Nodata>
+      )}
     </>
   );
 };
@@ -31,4 +35,11 @@ const Container = styled.div`
   justify-content: space-between;
   row-gap: 40px;
   flex-wrap: wrap;
+`;
+
+const Nodata = styled.div`
+  padding-top: 300px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
 `;
