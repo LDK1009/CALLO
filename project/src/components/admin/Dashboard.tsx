@@ -9,19 +9,19 @@ const Dashboard = () => {
     name: "",
     link: "",
     src: "",
-    major_category: "zero_calories",
     // major_category: "zero_calories",
-    // major_category: "low_calories",
+    major_category: "low_calories",
     // major_category: "zero_sugar",
     // major_category: "low_sugar",
-    // middle_category: "snack",
+
     // middle_category: "beverage",
     // middle_category: "snack",
     // middle_category: "bread",
     // middle_category: "noodle",
-    middle_category: "icecream",
+    // middle_category: "icecream",
     // middle_category: "frozen",
     // middle_category: "canned",
+    middle_category: "sauce",
     // middle_category: "rice_porridge",
     // middle_category: "lunch_box",
     // middle_category: "dairy",
@@ -35,6 +35,25 @@ const Dashboard = () => {
       fat: 0,
     },
   });
+
+  // 폼 데이터 초기화
+  const ClearFormData = () => {
+    setFormData((prev) => ({
+      ...prev,
+      name: "",
+      link: "",
+      src: "",
+      price: 0,
+      piece: 0,
+      price_per_piece: 0,
+      nutritional: {
+        calories: 0,
+        carbohydrate: 0,
+        protein: 0,
+        fat: 0,
+      },
+    }));
+  };
 
   // input 데이터 변경 감지 핸들러
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,26 +92,6 @@ const Dashboard = () => {
     e.preventDefault();
     postProduct();
     ClearFormData();
-  };
-
-  // 폼 데이터 초기화
-  const ClearFormData = () => {
-    setFormData({
-      name: "",
-      link: "",
-      src: "",
-      major_category: "zero_calories",
-      middle_category: "snack",
-      price: 0,
-      piece: 0,
-      price_per_piece: 0,
-      nutritional: {
-        calories: 0,
-        carbohydrate: 0,
-        protein: 0,
-        fat: 0,
-      },
-    });
   };
 
   // price_per_piece 계산

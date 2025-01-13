@@ -1,5 +1,5 @@
 import { enqueueSnackbar } from "notistack";
-import { getProdcts } from "../../services/product/productService";
+import { getPopularProducts, getProdcts } from "../../services/product/productService";
 import { useProductStore } from "@/store";
 import { getProductSearch } from "@/services/product/productSearchService";
 import { patchProdctView } from "@/services/product/productViewService";
@@ -20,7 +20,7 @@ const useProducts = () => {
 
   // 인기 상품 가져오기
   const handleGetPopularProducts = async () => {
-    const { data, error } = await getProdcts(); // 모든 상품 가져오기
+    const { data, error } = await getPopularProducts(); // 모든 상품 가져오기
 
     if (!error) {
       setPopularProducts(data);
@@ -41,9 +41,9 @@ const useProducts = () => {
   };
 
   // 조회수 증가
-  const hanleIncreaseView = async (productId : number) =>{
+  const hanleIncreaseView = async (productId: number) => {
     await patchProdctView(productId);
-  }
+  };
 
   return { handleGetProducts, handleGetPopularProducts, handleGetProductSearch, hanleIncreaseView };
 };
