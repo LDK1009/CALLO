@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useProductStore } from "@/store";
+import { patchSearchKeyword } from "@/services/search/searchService";
 
 const SearchBar = () => {
   const { setSearchString } = useProductStore();
@@ -28,6 +29,7 @@ const SearchBar = () => {
   const searchClick = () => {
     setSearchString(inputValue);
     router.push("/main");
+    patchSearchKeyword(inputValue);
   };
 
   return (
