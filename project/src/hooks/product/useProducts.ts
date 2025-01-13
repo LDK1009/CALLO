@@ -2,6 +2,7 @@ import { enqueueSnackbar } from "notistack";
 import { getProdcts } from "../../services/product/productService";
 import { useProductStore } from "@/store";
 import { getProductSearch } from "@/services/product/productSearchService";
+import { patchProdctView } from "@/services/product/productViewService";
 
 const useProducts = () => {
   const { majorCategory, middleCategory, searchString, setProducts, setPopularProducts } = useProductStore();
@@ -39,7 +40,12 @@ const useProducts = () => {
     }
   };
 
-  return { handleGetProducts, handleGetPopularProducts, handleGetProductSearch };
+  // 조회수 증가
+  const hanleIncreaseView = async (productId : number) =>{
+    await patchProdctView(productId);
+  }
+
+  return { handleGetProducts, handleGetPopularProducts, handleGetProductSearch, hanleIncreaseView };
 };
 
 export default useProducts;

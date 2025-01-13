@@ -22,6 +22,7 @@ export type ProductType = {
   price: number;
   piece?: number;
   price_per_piece: number;
+  view?:number;
   nutritional: Nutritional; // 영양 정보 (json)
 };
 

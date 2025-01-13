@@ -8,8 +8,10 @@ import { Typography } from "@mui/material";
 import Link from "next/link";
 import styled, { keyframes } from "styled-components";
 import SEO from "./SEO";
+import useProducts from "@/hooks/product/useProducts";
 
 const Product = ({ info }: { info: ProductType }) => {
+  const { hanleIncreaseView } = useProducts();
   const { handlePostCarts } = useCarts();
   const { uid } = useAuthStore();
 
@@ -38,39 +40,45 @@ const Product = ({ info }: { info: ProductType }) => {
     image: info.src,
   };
 
+  // 링크 클릭 시 조회수 증가
+  const onLinkClick = () => {
+    if (info && info.id) {
+      hanleIncreaseView(info.id);
+    }
+  };
+
   return (
     <>
-    <SEO {...productSEO} />
-    <Link href={info.link} target="_blank" rel="noopener noreferrer">
-      <Container>
-        <ImgNutritionalWrap>
-          <ScrollAnimationBall />
-          <Img src={info.src} alt="" />
-          <Nutritional>
-            <TypographyWrap>
-              <Typography variant="body1">칼로리 : {nutritional.calories}</Typography>
-              <Typography variant="body1">탄수화물 : {nutritional.carbohydrate}</Typography>
-              <Typography variant="body1">단백질 : {nutritional.protein}</Typography>
-              <Typography variant="body1">지방 : {nutritional.fat}</Typography>
-            </TypographyWrap>
-          </Nutritional>
-        </ImgNutritionalWrap>
-        <HeadTextWrap>
-          <Typography variant="body1">BEST</Typography>
-          <ShoppingIcon onClick={(e) => shopingIconClick(e)} />
-        </HeadTextWrap>
-        <Name variant="body1">{info.name}</Name>
-        <PriceWrap>
-          <TotalPrice>{formatNumber(info.price)}원</TotalPrice>
-          <PricePrePieceWrap>
-            <PieceText>1개당</PieceText>
-            <PricePerPiece>{formatNumber(info.price_per_piece)}원</PricePerPiece>
-          </PricePrePieceWrap>
-        </PriceWrap>
-      </Container>
-    </Link>
+      <SEO {...productSEO} />
+      <Link href={info.link} onClick={onLinkClick} target="_blank" rel="noopener noreferrer">
+        <Container>
+          <ImgNutritionalWrap>
+            <ScrollAnimationBall />
+            <Img src={info.src} alt="" />
+            <Nutritional>
+              <TypographyWrap>
+                <Typography variant="body1">칼로리 : {nutritional.calories}</Typography>
+                <Typography variant="body1">탄수화물 : {nutritional.carbohydrate}</Typography>
+                <Typography variant="body1">단백질 : {nutritional.protein}</Typography>
+                <Typography variant="body1">지방 : {nutritional.fat}</Typography>
+              </TypographyWrap>
+            </Nutritional>
+          </ImgNutritionalWrap>
+          <HeadTextWrap>
+            <Typography variant="body1">BEST</Typography>
+            <ShoppingIcon onClick={(e) => shopingIconClick(e)} />
+          </HeadTextWrap>
+          <Name variant="body1">{info.name}</Name>
+          <PriceWrap>
+            <TotalPrice>{formatNumber(info.price)}원</TotalPrice>
+            <PricePrePieceWrap>
+              <PieceText>1개당</PieceText>
+              <PricePerPiece>{formatNumber(info.price_per_piece)}원</PricePerPiece>
+            </PricePrePieceWrap>
+          </PriceWrap>
+        </Container>
+      </Link>
     </>
-
   );
 };
 

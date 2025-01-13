@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     site: "@CALLO", // 실제 Twitter 계정 추가
     title: "CALLO(칼로) - 제로 칼로리 쇼핑몰",
     description: "제로 칼로리, 제로 슈가 등 다양한 카테고리의 제로 식품들을 CALLO(칼로)에서 만나보세요!",
-    images: ["https://callo-mu.vercel.app/img/logo-1.png"],
+    images: ["https://www.callo.store/img/logo-1.png"],
   },
   robots: {
     index: true,
