@@ -9,7 +9,7 @@ export const getProdcts = async (
   middleCategory?: string,
   searchString?: string
 ): Promise<GetProductsResponse> => {
-  let query = supabase.from("products").select("*");
+  let query = supabase.from("products").select("*").order("view", { ascending: false });
 
   // 조건 체이닝
   if (majorCategory) {
