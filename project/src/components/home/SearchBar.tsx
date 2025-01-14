@@ -8,7 +8,7 @@ import { useProductStore } from "@/store";
 import { patchSearchKeyword } from "@/services/search/searchService";
 
 const SearchBar = () => {
-  const { setSearchString } = useProductStore();
+  const { setSearchString, setMajorCategory, setMiddleCategory } = useProductStore();
   const router = useRouter();
 
   const [inputValue, setInputValue] = useState("");
@@ -27,6 +27,8 @@ const SearchBar = () => {
 
   // 아이콘 클릭 시 작동 함수
   const searchClick = () => {
+    setMajorCategory("");
+    setMiddleCategory("");
     setSearchString(inputValue);
     router.push("/main");
     patchSearchKeyword(inputValue);

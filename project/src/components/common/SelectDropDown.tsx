@@ -1,3 +1,4 @@
+import { patchSearchKeyword } from "@/services/search/searchService";
 import { useProductStore } from "@/store";
 import { FormControl, MenuItem, Select } from "@mui/material";
 import { useRouter } from "next/navigation";
@@ -5,7 +6,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const SelectDropDown = () => {
-  const { setSearchString } = useProductStore();
+  const { setSearchString, setMajorCategory, setMiddleCategory } = useProductStore();
   const router = useRouter();
 
   const selectArr = [
@@ -30,6 +31,9 @@ const SelectDropDown = () => {
         value={el.value}
         onClick={() => {
           setSearchString(el.text);
+          patchSearchKeyword(el.text);
+          setMajorCategory("");
+          setMiddleCategory("");
           router.push("/main");
         }}
       >

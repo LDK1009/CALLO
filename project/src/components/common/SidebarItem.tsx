@@ -14,17 +14,19 @@ type PropsType = {
 };
 
 const SidebarItem = ({ index, text, isSelect, query, type }: PropsType) => {
-  const { setMajorCategory, setMiddleCategory } = useProductStore();
+  const { setMajorCategory, setMiddleCategory, setSearchString } = useProductStore();
   const { setItem, setItem2, close, secondOpen } = useSidebarStore();
   const router = useRouter();
 
   function majorHandleClick() {
+    setSearchString("");
     setMajorCategory(query);
     setItem(index);
     secondOpen();
   }
 
   function middleHandleClick() {
+    setSearchString("");
     setMiddleCategory(query);
     setItem2(index);
     router.push("/main");

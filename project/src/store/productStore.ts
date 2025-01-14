@@ -6,7 +6,7 @@ export const useProductStore = create<ProductState>((set) => ({
   popularProducts: [],
   majorCategory: "zero_calories",
   middleCategory: "",
-  searchString:"",
+  searchString: "",
   setProducts: (products) => set({ products }),
   setPopularProducts: (popularProducts) => set({ popularProducts }),
   setMajorCategory: (majorCategory) => set({ majorCategory }),

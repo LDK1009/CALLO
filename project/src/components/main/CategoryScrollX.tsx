@@ -22,19 +22,19 @@ const CategoryScrollX = () => {
   ]);
 
   const middleCategory = useProductStore((state) => state.middleCategory);
-  const setMiddleCategory = useProductStore((state) => state.setMiddleCategory);
+  const { setMiddleCategory, setSearchString } = useProductStore();
 
   useEffect(() => {
     setCategories((prev) =>
       prev.map((el) => (el.query === middleCategory ? { ...el, isSelect: true } : { ...el, isSelect: false }))
     );
-
   }, [middleCategory]);
 
   const RenderCategories = categories.map((el, idx) => {
     return (
       <CategoryItem
         onClick={() => {
+          setSearchString("");
           setMiddleCategory(el.query);
         }}
         key={idx}
