@@ -9,12 +9,22 @@ import Link from "next/link";
 import styled, { keyframes } from "styled-components";
 import SEO from "./SEO";
 import useProducts from "@/hooks/product/useProducts";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay } from "swiper/modules";
+import { useRef, useState } from "react";
+import { Swiper as SwiperType } from "swiper/types"; // Import Swiper type
 
 const Product = ({ info }: { info: ProductType }) => {
+  // 커스텀훅
   const { hanleIncreaseView } = useProducts();
   const { handlePostCarts } = useCarts();
-  const { uid } = useAuthStore();
 
+  // 상태
+  const { uid } = useAuthStore();
+  const swiperRef = useRef<SwiperType | null>(null); // Type the ref properly
+
+  // 함수
   function shopingIconClick(e: React.MouseEvent<SVGSVGElement, MouseEvent>) {
     e.preventDefault(); // 기본 동작 중단 (리다이렉션 방지)
 
@@ -47,23 +57,59 @@ const Product = ({ info }: { info: ProductType }) => {
     }
   };
 
+  const [, setSlideChangeCount] = useState(0);
+  const MAX_AUTOPLAY_COUNT = 2; // 최대 자동 재생 횟수
+
+  const onAutoPlay = () => {
+    setSlideChangeCount((prevCount) => {
+      const newCount = prevCount + 1;
+
+      if (newCount >= MAX_AUTOPLAY_COUNT) {
+        swiperRef.current?.autoplay.stop(); // 자동 재생 중단
+        console.log("자동 재생이 중단되었습니다.");
+      }
+
+      return newCount;
+    });
+  };
+
   return (
     <>
       <SEO {...productSEO} />
       <Link href={info.link} onClick={onLinkClick} target="_blank" rel="noopener noreferrer">
         <Container>
-          <ImgNutritionalWrap>
-            <ScrollAnimationBall />
-            <Img src={info.src} alt="" />
-            <Nutritional>
-              <TypographyWrap>
-                <Typography variant="body1">칼로리 : {nutritional.calories}</Typography>
-                <Typography variant="body1">탄수화물 : {nutritional.carbohydrate}</Typography>
-                <Typography variant="body1">단백질 : {nutritional.protein}</Typography>
-                <Typography variant="body1">지방 : {nutritional.fat}</Typography>
-              </TypographyWrap>
-            </Nutritional>
-          </ImgNutritionalWrap>
+          <ImgAndNutritional
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+
+              swiper.on("autoplay", () => {
+                console.log("Autoplay 진행 중");
+                onAutoPlay();
+              });
+            }}
+            spaceBetween={0} // 슬라이드 간격
+            slidesPerView={1} // 한 번에 보여줄 슬라이드 수
+            modules={[Autoplay]}
+            autoplay={{
+              delay: 1500,
+            }}
+            loop={true}
+          >
+            <SwiperSlide>
+              <Img src={info.src} alt="" />
+              <ScrollAnimationBall />
+            </SwiperSlide>
+            <SwiperSlide>
+              <Nutritional>
+                <TypographyWrap>
+                  <Typography variant="body1">칼로리 : {nutritional.calories}</Typography>
+                  <Typography variant="body1">탄수화물 : {nutritional.carbohydrate}</Typography>
+                  <Typography variant="body1">단백질 : {nutritional.protein}</Typography>
+                  <Typography variant="body1">지방 : {nutritional.fat}</Typography>
+                </TypographyWrap>
+              </Nutritional>
+            </SwiperSlide>
+          </ImgAndNutritional>
           <HeadTextWrap>
             <Typography variant="body1">BEST</Typography>
             <ShoppingIcon onClick={(e) => shopingIconClick(e)} />
@@ -92,18 +138,11 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const ImgNutritionalWrap = styled.div`
-  width: 100%;
-  display: flex;
-  position: relative;
-  scroll-snap-type: x mandatory;
-  overflow-x: auto;
-  /* 스크롤바 제거 */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
-  &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
-  }
+const ImgAndNutritional = styled(Swiper)`
+  width: 160px;
+  height: 160px;
+  border-radius: 12px;
+  border: 1px solid #dddddd;
 `;
 
 const scrollBallAnimation = keyframes`
@@ -135,19 +174,16 @@ const ScrollAnimationBall = styled.div`
 
 const Img = styled.img`
   width: 100%;
-  height: auto;
-  border-radius: 12px;
-  scroll-snap-align: start;
+  height: 100%;
+  position: relative !important;
 `;
 
 const Nutritional = styled.div`
   width: 100%;
-  height: auto;
-  flex-shrink: 0;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  scroll-snap-align: start;
 `;
 
 const TypographyWrap = styled.div`

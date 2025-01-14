@@ -68,6 +68,7 @@ const Container = styled.div`
   position: fixed;
   bottom: 0px;
   background-color: white;
+  z-index:100;
 
   & svg {
     width: 30px !important;
