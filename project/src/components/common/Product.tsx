@@ -6,10 +6,9 @@ import { ProductType } from "@/types/store/product.type";
 import { ShoppingBagOutlined } from "@mui/icons-material";
 import { Typography } from "@mui/material";
 import Link from "next/link";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import SEO from "./SEO";
 import useProducts from "@/hooks/product/useProducts";
-import "swiper/css";
 import ImgNutritionSwiper from "./ImgNutritionSwiper";
 
 const Product = ({ info }: { info: ProductType }) => {
@@ -55,7 +54,7 @@ const Product = ({ info }: { info: ProductType }) => {
       <SEO {...productSEO} />
       <Link href={info.link} onClick={onLinkClick} target="_blank" rel="noopener noreferrer">
         <Container>
-          <ImgNutritionSwiper size={160} src={info.src} nutritional={info.nutritional}/>
+          <ImgNutritionSwiper size={160} src={info.src} nutritional={info.nutritional} />
           <HeadTextWrap>
             <Typography variant="body1">BEST</Typography>
             <ShoppingIcon onClick={(e) => shopingIconClick(e)} />
@@ -82,35 +81,6 @@ const Container = styled.div`
   flex-direction: column;
   row-gap: 12px;
   align-items: center;
-`;
-
-
-
-const scrollBallAnimation = keyframes`
-  0% {
-    opacity: 0;
-    transform:translateX(0px);
-  }
-  50% {
-    opacity: 1;
-    transform:translateX(0px);
-  }
-  100% {
-    opacity: 1;
-    transform:translateX(-40px);
-  }
-`;
-
-const ScrollAnimationBall = styled.div`
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  opacity: 0;
-  bottom: 12px;
-  right: 12px;
-  border-radius: 100%;
-  background-color: var(--gray);
-  animation: ${scrollBallAnimation} 2.5s ease-in-out 2;
 `;
 
 const HeadTextWrap = styled.div`

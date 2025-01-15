@@ -1,12 +1,16 @@
+"use client";
+
 import { Typography } from "@mui/material";
 import React, { useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Swiper as SwiperType } from "swiper/types"; // Import Swiper type
+import { Swiper as SwiperType } from "swiper/types"; 
+import 'swiper/css';
+
 
 type PropsType = {
-  size:number;
+  size: number;
   src: string;
   nutritional: {
     calories: number;
@@ -15,6 +19,8 @@ type PropsType = {
     fat: number;
   };
 };
+
+
 const ImgNutritionSwiper = ({ size, src, nutritional }: PropsType) => {
   const swiperRef = useRef<SwiperType | null>(null); // Type the ref properly
 
@@ -55,7 +61,7 @@ const ImgNutritionSwiper = ({ size, src, nutritional }: PropsType) => {
       >
         <SwiperSlide>
           <Img src={src} alt="productImage" width={size} height={size} />
-          <ScrollAnimationBall/>
+          <ScrollAnimationBall />
         </SwiperSlide>
         <SwiperSlide>
           <Nutritional $size={size}>
@@ -75,26 +81,26 @@ const ImgNutritionSwiper = ({ size, src, nutritional }: PropsType) => {
 export default ImgNutritionSwiper;
 
 type ContainerType = {
-    $size:number;
-}
+  $size: number;
+};
 const Container = styled.div<ContainerType>`
-  width: ${(props)=>`${props.$size}px`};
-  height: ${(props)=>`${props.$size}px`};
+  width: ${(props) => `${props.$size}px`};
+  height: ${(props) => `${props.$size}px`};
   border-radius: 12px;
   border: 1px solid #dddddd;
-  overflow:hidden;
+  overflow: hidden;
 `;
 
 const Img = styled.img`
-    position:relative;
+  position: relative;
 `;
 
 type NutritionalType = {
-    $size:number;
-}
+  $size: number;
+};
 const Nutritional = styled.div<NutritionalType>`
-  width: ${(props)=>`${props.$size}px`};
-  height: ${(props)=>`${props.$size}px`};
+  width: ${(props) => `${props.$size}px`};
+  height: ${(props) => `${props.$size}px`};
   display: flex;
   align-items: center;
   justify-content: center;
