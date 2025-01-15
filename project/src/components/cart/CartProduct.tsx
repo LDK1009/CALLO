@@ -27,7 +27,7 @@ const CartProduct = ({ info, index }: PropsType) => {
 
   return (
     <Container onClick={() => router.push(info.link)}>
-      <ImgNutritionSwiper size={100} src={info.src} nutritional={info.nutritional} />
+      <ImgNutritionSwiper size={100} fontSize="body2" src={info.src} nutritional={info.nutritional} />
       <TextWrap>
         <Name>{info.name}</Name>
         <PriceWrap>

@@ -54,7 +54,7 @@ const Product = ({ info }: { info: ProductType }) => {
       <SEO {...productSEO} />
       <Link href={info.link} onClick={onLinkClick} target="_blank" rel="noopener noreferrer">
         <Container>
-          <ImgNutritionSwiper size={160} src={info.src} nutritional={info.nutritional} />
+          <ImgNutritionSwiper size={160} fontSize="body1" src={info.src} nutritional={info.nutritional} />
           <HeadTextWrap>
             <Typography variant="body1">BEST</Typography>
             <ShoppingIcon onClick={(e) => shopingIconClick(e)} />

@@ -5,12 +5,12 @@ import React, { useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Swiper as SwiperType } from "swiper/types"; 
-import 'swiper/css';
-
+import { Swiper as SwiperType } from "swiper/types";
+import "swiper/css";
 
 type PropsType = {
   size: number;
+  fontSize: "body1" | "body2";
   src: string;
   nutritional: {
     calories: number;
@@ -20,8 +20,7 @@ type PropsType = {
   };
 };
 
-
-const ImgNutritionSwiper = ({ size, src, nutritional }: PropsType) => {
+const ImgNutritionSwiper = ({ size, fontSize, src, nutritional }: PropsType) => {
   const swiperRef = useRef<SwiperType | null>(null); // Type the ref properly
 
   const [, setSlideChangeCount] = useState(0);
@@ -66,10 +65,10 @@ const ImgNutritionSwiper = ({ size, src, nutritional }: PropsType) => {
         <SwiperSlide>
           <Nutritional $size={size}>
             <TypographyWrap>
-              <Typography variant="body1">칼로리 : {nutritional.calories}</Typography>
-              <Typography variant="body1">탄수화물 : {nutritional.carbohydrate}</Typography>
-              <Typography variant="body1">단백질 : {nutritional.protein}</Typography>
-              <Typography variant="body1">지방 : {nutritional.fat}</Typography>
+              <Typography variant={fontSize}>칼로리 : {nutritional.calories}</Typography>
+              <Typography variant={fontSize}>탄수화물 : {nutritional.carbohydrate}</Typography>
+              <Typography variant={fontSize}>단백질 : {nutritional.protein}</Typography>
+              <Typography variant={fontSize}>지방 : {nutritional.fat}</Typography>
             </TypographyWrap>
           </Nutritional>
         </SwiperSlide>
