@@ -2,44 +2,32 @@
 
 import { useCartStore } from "@/store";
 import { CartItemType } from "@/types/store/cart.type";
-import { Checkbox, Typography } from "@mui/material";
+import { Checkbox } from "@mui/material";
 import { useRouter } from "next/navigation";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import ImgNutritionSwiper from "../common/ImgNutritionSwiper";
 
 type PropsType = { info: CartItemType; index: number };
 
 const CartProduct = ({ info, index }: PropsType) => {
-  const {items, setItems} = useCartStore();
+  const { items, setItems } = useCartStore();
 
-  function checkBoxChange(i : number){
-    const nextItems = items?.map((el, elIdx)=>{
-      return i === elIdx ? {...el, isSelect : !el.isSelect} : el
+  function checkBoxChange(i: number) {
+    const nextItems = items?.map((el, elIdx) => {
+      return i === elIdx ? { ...el, isSelect: !el.isSelect } : el;
     });
     setItems(nextItems);
   }
-  
+
   const formatNumber = (value: number): string => {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  const { nutritional } = info;
-
   const router = useRouter();
 
   return (
-    <Container>
-      <ImgNutritionalWrap onClick={() => router.push(info.link)}>
-        <ScrollAnimationBall />
-        <Img src={info.src} alt="" />
-        <Nutritional>
-          <TypographyWrap>
-            <Typography variant="body1">칼로리 : {nutritional.calories}</Typography>
-            <Typography variant="body1">탄수화물 : {nutritional.carbohydrate}</Typography>
-            <Typography variant="body1">단백질 : {nutritional.protein}</Typography>
-            <Typography variant="body1">지방 : {nutritional.fat}</Typography>
-          </TypographyWrap>
-        </Nutritional>
-      </ImgNutritionalWrap>
+    <Container onClick={() => router.push(info.link)}>
+      <ImgNutritionSwiper size={100} src={info.src} nutritional={info.nutritional} />
       <TextWrap>
         <Name>{info.name}</Name>
         <PriceWrap>
@@ -50,7 +38,13 @@ const CartProduct = ({ info, index }: PropsType) => {
           </PiecePriceWrap>
         </PriceWrap>
       </TextWrap>
-      <CheckBox checked={info.isSelect} onChange={() => {checkBoxChange(index)}} />
+      <CheckBox
+        checked={info.isSelect}
+        onClick={(e) => e.stopPropagation()} // 클릭 이벤트 전파 방지
+        onChange={() => {
+          checkBoxChange(index);
+        }}
+      />
     </Container>
   );
 };
@@ -65,92 +59,24 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const ImgNutritionalWrap = styled.div`
-  width: 100px;
-  height: 100%;
-  display: flex;
-  position: relative;
-  scroll-snap-type: x mandatory;
-  overflow-x: auto;
-  /* 스크롤바 제거 */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
-  &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
-  }
-`;
-
-const scrollBallAnimation = keyframes`
-  0% {
-    opacity: 0;
-    transform:translateX(0px);
-  }
-  50% {
-    opacity: 1;
-    transform:translateX(0px);
-  }
-  100% {
-    opacity: 1;
-    transform:translateX(-40px);
-  }
-`;
-
-const ScrollAnimationBall = styled.div`
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  opacity: 0;
-  bottom: 12px;
-  right: 12px;
-  border-radius: 100%;
-  background-color: var(--gray);
-  animation: ${scrollBallAnimation} 2.5s ease-in-out 2;
-`;
-
-const Img = styled.img`
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  scroll-snap-align: start;
-`;
-
-const Nutritional = styled.div`
-  width: 100%;
-  height: auto;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  scroll-snap-align: start;
-`;
-
-const TypographyWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  & > p {
-    font-weight: bold;
-  }
-`;
-
-// const Img = styled.img`
-//   width: 100px;
-//   height: 100px;
-//   border-radius: 12px;
-// `;
-
 const TextWrap = styled.div`
   width: 160px;
   height: 100%;
-  padding: 16px 0px;
+  padding: 8px 0px;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-between;
 `;
 
 const Name = styled.div`
   font-size: 16px;
+  align-self: flex-start;
+  display: -webkit-box; /* 플렉스 박스처럼 동작 */
+  -webkit-box-orient: vertical; /* 수직 방향으로 텍스트 정렬 */
+  overflow: hidden; /* 넘치는 텍스트 숨김 */
+  -webkit-line-clamp: 2; /* 최대 2줄까지만 표시 */
+  text-overflow: ellipsis; /* 잘린 텍스트 뒤에 '...' 추가 */
 `;
 
 const PriceWrap = styled.div`

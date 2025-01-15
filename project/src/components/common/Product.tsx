@@ -9,11 +9,8 @@ import Link from "next/link";
 import styled, { keyframes } from "styled-components";
 import SEO from "./SEO";
 import useProducts from "@/hooks/product/useProducts";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Autoplay } from "swiper/modules";
-import { useRef, useState } from "react";
-import { Swiper as SwiperType } from "swiper/types"; // Import Swiper type
+import ImgNutritionSwiper from "./ImgNutritionSwiper";
 
 const Product = ({ info }: { info: ProductType }) => {
   // 커스텀훅
@@ -22,7 +19,6 @@ const Product = ({ info }: { info: ProductType }) => {
 
   // 상태
   const { uid } = useAuthStore();
-  const swiperRef = useRef<SwiperType | null>(null); // Type the ref properly
 
   // 함수
   function shopingIconClick(e: React.MouseEvent<SVGSVGElement, MouseEvent>) {
@@ -39,9 +35,6 @@ const Product = ({ info }: { info: ProductType }) => {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  // 영양소 데이터 비구조화 할당
-  const { nutritional } = info;
-
   const productSEO = {
     title: "CALLO - " + info.name,
     description: info.nutritional.calories + "상품 발견! 놓치지말고 구매하세요!",
@@ -57,59 +50,12 @@ const Product = ({ info }: { info: ProductType }) => {
     }
   };
 
-  const [, setSlideChangeCount] = useState(0);
-  const MAX_AUTOPLAY_COUNT = 2; // 최대 자동 재생 횟수
-
-  const onAutoPlay = () => {
-    setSlideChangeCount((prevCount) => {
-      const newCount = prevCount + 1;
-
-      if (newCount >= MAX_AUTOPLAY_COUNT) {
-        swiperRef.current?.autoplay.stop(); // 자동 재생 중단
-        console.log("자동 재생이 중단되었습니다.");
-      }
-
-      return newCount;
-    });
-  };
-
   return (
     <>
       <SEO {...productSEO} />
       <Link href={info.link} onClick={onLinkClick} target="_blank" rel="noopener noreferrer">
         <Container>
-          <ImgAndNutritional
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-
-              swiper.on("autoplay", () => {
-                console.log("Autoplay 진행 중");
-                onAutoPlay();
-              });
-            }}
-            spaceBetween={0} // 슬라이드 간격
-            slidesPerView={1} // 한 번에 보여줄 슬라이드 수
-            modules={[Autoplay]}
-            autoplay={{
-              delay: 1500,
-            }}
-            loop={true}
-          >
-            <SwiperSlide>
-              <Img src={info.src} alt="" />
-              <ScrollAnimationBall />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Nutritional>
-                <TypographyWrap>
-                  <Typography variant="body1">칼로리 : {nutritional.calories}</Typography>
-                  <Typography variant="body1">탄수화물 : {nutritional.carbohydrate}</Typography>
-                  <Typography variant="body1">단백질 : {nutritional.protein}</Typography>
-                  <Typography variant="body1">지방 : {nutritional.fat}</Typography>
-                </TypographyWrap>
-              </Nutritional>
-            </SwiperSlide>
-          </ImgAndNutritional>
+          <ImgNutritionSwiper size={160} src={info.src} nutritional={info.nutritional}/>
           <HeadTextWrap>
             <Typography variant="body1">BEST</Typography>
             <ShoppingIcon onClick={(e) => shopingIconClick(e)} />
@@ -138,12 +84,7 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const ImgAndNutritional = styled(Swiper)`
-  width: 160px;
-  height: 160px;
-  border-radius: 12px;
-  border: 1px solid #dddddd;
-`;
+
 
 const scrollBallAnimation = keyframes`
   0% {
@@ -170,29 +111,6 @@ const ScrollAnimationBall = styled.div`
   border-radius: 100%;
   background-color: var(--gray);
   animation: ${scrollBallAnimation} 2.5s ease-in-out 2;
-`;
-
-const Img = styled.img`
-  width: 100%;
-  height: 100%;
-  position: relative !important;
-`;
-
-const Nutritional = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const TypographyWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  & > p {
-    font-weight: bold;
-  }
 `;
 
 const HeadTextWrap = styled.div`
