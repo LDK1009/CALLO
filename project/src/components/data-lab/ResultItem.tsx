@@ -68,7 +68,7 @@ const NutritionalAndUnitWrap = styled.div`
 `;
 
 const Nutritional = styled.div`
-  font-size: 50px;
+  font-size: 24px;
   font-weight: bold;
   color: var(--black);
 `;
